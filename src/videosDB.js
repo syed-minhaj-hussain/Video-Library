@@ -6,7 +6,7 @@ export const videos = [
     duration: "33:44",
     channel: "Sky Sports Cricket",
     logo: "https://i.ibb.co/z8JH30D/vi.jpg",
-    thubmnail: "https://i.ibb.co/SQbCLBC/virat-dk.jpg",
+    thumbnail: "https://i.ibb.co/SQbCLBC/virat-dk.jpg",
     verified: true,
   },
   {
@@ -16,7 +16,7 @@ export const videos = [
     duration: "8:27",
     channel: "Hitesh Choudhary",
     logo: "https://i.ibb.co/5vcrY6q/hc.jpg",
-    thubmnail: "https://i.ibb.co/8DnCgDG/hct.jpg",
+    thumbnail: "https://i.ibb.co/8DnCgDG/hct.jpg",
     verified: true,
   },
   {
@@ -26,7 +26,7 @@ export const videos = [
     duration: "7:42",
     channel: "Tanay Pratap",
     logo: "https://i.ibb.co/gWQHfYv/tp.jpg",
-    thubmnail: "https://i.ibb.co/SwVBTRL/Tpt.jpg",
+    thumbnail: "https://i.ibb.co/SwVBTRL/Tpt.jpg",
     verified: true,
   },
   {
@@ -36,7 +36,7 @@ export const videos = [
     duration: "8:01",
     channel: "WATOP",
     logo: "https://i.ibb.co/zFJH81H/ani-watop.jpg",
-    thubmnail: "https://i.ibb.co/hD67zyD/animal.jpg",
+    thumbnail: "https://i.ibb.co/hD67zyD/animal.jpg",
     verified: true,
   },
   {
@@ -46,7 +46,7 @@ export const videos = [
     duration: "6:39",
     channel: "ESPNcricinfo",
     logo: "https://i.ibb.co/Y7FZnkR/espn.jpg",
-    thubmnail: "https://i.ibb.co/DV175pz/espnt.jpg",
+    thumbnail: "https://i.ibb.co/DV175pz/espnt.jpg",
     verified: true,
   },
   {
@@ -56,7 +56,7 @@ export const videos = [
     duration: "1:51:00",
     channel: "Traversy Media",
     logo: "https://i.ibb.co/K5mJWDZ/tv.jpg",
-    thubmnail: "https://i.ibb.co/DwpZZRH/tvmt.jpg",
+    thumbnail: "https://i.ibb.co/DwpZZRH/tvmt.jpg",
     verified: true,
   },
   {
@@ -66,7 +66,7 @@ export const videos = [
     duration: "5:51",
     channel: "Code Wizard",
     logo: "https://i.ibb.co/BcSy7m6/pretc.jpg",
-    thubmnail: "https://i.ibb.co/BcSy7m6/pretc.jpg",
+    thumbnail: "https://i.ibb.co/Wk9DXMK/Pret.jpg",
     verified: true,
   },
   {
@@ -76,7 +76,7 @@ export const videos = [
     duration: "2:08",
     channel: "T20 Mumbai",
     logo: "https://i.ibb.co/V2qwsqY/suryac.jpg",
-    thubmnail: "https://i.ibb.co/V2qwsqY/suryac.jpg",
+    thumbnail: "https://i.ibb.co/XJR00N5/suryat.jpg",
     verified: true,
   },
   {
@@ -86,7 +86,7 @@ export const videos = [
     duration: "3:05",
     channel: "Olympics",
     logo: "https://i.ibb.co/Dw4KK2z/olympicsc.jpg",
-    thubmnail: "https://i.ibb.co/7SP5BNg/olympicst.jpg",
+    thumbnail: "https://i.ibb.co/7SP5BNg/olympicst.jpg",
     verified: true,
   },
   {
@@ -96,7 +96,7 @@ export const videos = [
     duration: "7:38",
     channel: "The Net Ninja",
     logo: "https://i.ibb.co/ZBxvYNR/ninjac.jpg",
-    thubmnail: "https://i.ibb.co/cF8vFJY/ninjat.jpg",
+    thumbnail: "https://i.ibb.co/cF8vFJY/ninjat.jpg",
     verified: true,
   },
   {
@@ -106,7 +106,7 @@ export const videos = [
     duration: "5:48",
     channel: "Sri Lanka Cricket",
     logo: "https://i.ibb.co/RTtrtmR/dkc.jpg",
-    thubmnail: "https://i.ibb.co/PQWYPXk/dkt.jpg",
+    thumbnail: "https://i.ibb.co/PQWYPXk/dkt.jpg",
     verified: true,
   },
   {
@@ -116,7 +116,7 @@ export const videos = [
     duration: "3:05",
     channel: "Olympics",
     logo: "https://i.ibb.co/Dw4KK2z/olympicsc.jpg",
-    thubmnail: "https://i.ibb.co/8zZJM5P/niravt.jpg",
+    thumbnail: "https://i.ibb.co/8zZJM5P/niravt.jpg",
     verified: true,
   },
   {
@@ -126,7 +126,7 @@ export const videos = [
     duration: "2:10",
     channel: "Olympics",
     logo: "https://i.ibb.co/Dw4KK2z/olympicsc.jpg",
-    thubmnail: "https://i.ibb.co/znrzKNm/neymart.jpg",
+    thumbnail: "https://i.ibb.co/znrzKNm/neymart.jpg",
     verified: true,
   },
   {
@@ -136,7 +136,7 @@ export const videos = [
     duration: "5:42",
     channel: "Tanay Pratap",
     logo: "https://i.ibb.co/gWQHfYv/tp.jpg",
-    thubmnail: "https://i.ibb.co/s2BCfpg/tptp.jpg",
+    thumbnail: "https://i.ibb.co/s2BCfpg/tptp.jpg",
     verified: true,
   },
   {
@@ -146,7 +146,7 @@ export const videos = [
     duration: "3:55",
     channel: "Sri Lanka Cricket",
     logo: "https://i.ibb.co/RTtrtmR/dkc.jpg",
-    thubmnail: "https://i.ibb.co/2NLRcwX/malingat.jpg",
+    thumbnail: "https://i.ibb.co/2NLRcwX/malingat.jpg",
     verified: true,
   },
   {
@@ -156,7 +156,7 @@ export const videos = [
     duration: "6:29",
     channel: "NZC",
     logo: "https://i.ibb.co/rpn0Hzg/rohitc.jpg",
-    thubmnail: "https://i.ibb.co/XDt6rhw/rohit.jpg",
+    thumbnail: "https://i.ibb.co/XDt6rhw/rohit.jpg",
     verified: true,
   },
   {
@@ -166,7 +166,7 @@ export const videos = [
     duration: "4:29",
     channel: "STROPS",
     logo: "https://i.ibb.co/FhWgkyy/bikec.jpg",
-    thubmnail: "https://i.ibb.co/VCD7Mxv/biket.jpg",
+    thumbnail: "https://i.ibb.co/VCD7Mxv/biket.jpg",
     verified: true,
   },
   {
@@ -176,7 +176,7 @@ export const videos = [
     duration: "12:25",
     channel: "The Net Ninja",
     logo: "https://i.ibb.co/ZBxvYNR/ninjac.jpg",
-    thubmnail: "https://i.ibb.co/q7dvRwM/ninjamt.jpg",
+    thumbnail: "https://i.ibb.co/q7dvRwM/ninjamt.jpg",
     verified: true,
   },
   {
@@ -186,7 +186,7 @@ export const videos = [
     duration: "1:25",
     channel: "Traversy Media",
     logo: "https://i.ibb.co/K5mJWDZ/tv.jpg",
-    thubmnail: "https://i.ibb.co/WfvV0zd/csst.jpg",
+    thumbnail: "https://i.ibb.co/WfvV0zd/csst.jpg",
     verified: true,
   },
   {
@@ -196,7 +196,7 @@ export const videos = [
     duration: "0:35",
     channel: "Olympics",
     logo: "https://i.ibb.co/Dw4KK2z/olympicsc.jpg",
-    thubmnail: "https://i.ibb.co/WcsdGgV/hockeyt.jpg",
+    thumbnail: "https://i.ibb.co/WcsdGgV/hockeyt.jpg",
     verified: true,
   },
 ];

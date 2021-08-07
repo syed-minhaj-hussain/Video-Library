@@ -4,7 +4,7 @@ import { reducerFunc } from "../utilities";
 
 const VideosContext = createContext();
 
-export const WishCartProvider = ({ children }) => {
+export const VideosProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducerFunc, {
     liked: [],
     history: [],

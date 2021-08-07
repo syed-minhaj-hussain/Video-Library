@@ -78,20 +78,6 @@ export const Navbar = () => {
               onClick={() => setIsActive((prev) => !prev)}
             >
               <FaShoppingCart style={{ fontSize: "1.1rem" }} />
-              <p
-                style={{
-                  position: "absolute",
-                  top: "0.1rem",
-                  right: "0.1rem",
-                  padding: "0.2rem 0.4rem",
-                  backgroundColor: "black",
-                  color: "white",
-                  borderRadius: "50%",
-                  fontSize: "0.7rem",
-                }}
-              >
-                {cart.length}
-              </p>
             </NavLink>
           </li>
           <li>
@@ -108,20 +94,6 @@ export const Navbar = () => {
               onClick={() => setIsActive((prev) => !prev)}
             >
               <HiOutlineHeart style={{ fontSize: "1.25rem" }} />
-              <p
-                style={{
-                  position: "absolute",
-                  top: "0.1rem",
-                  right: "0.1rem",
-                  padding: "0.2rem 0.4rem",
-                  backgroundColor: "black",
-                  color: "white",
-                  borderRadius: "50%",
-                  fontSize: "0.7rem",
-                }}
-              >
-                {wishlist.length}
-              </p>
             </NavLink>
           </li>
           <li className={`${isUserLoggedIn ? `${navStyle.logout}` : ""} `}>
