@@ -8,22 +8,41 @@ import { Link } from "react-router-dom";
 
 export const Home = () => {
   const {
-    state: { videos },
+    state: { videos, history },
+    dispatch,
   } = useVideosContext();
   return (
     <div className={homeStyle.container}>
       <div className={homeStyle.grid}>
         {videos?.map(
-          ({ id, name, logo, channel, thumbnail, verified, url, intro }) => (
-            <Link key={id} to={`/watch/${id}`} className={homeStyle.link}>
+          ({ id, logo, channel, thumbnail, verified, intro, duration }) => (
+            <Link
+              key={id}
+              to={`/watch/${id}`}
+              className={homeStyle.link}
+              onClick={() => {
+                if (history.find((vid) => vid.id === id)) {
+                  return dispatch({
+                    type: "CHANGE-HISTORY",
+                    payload: videos?.find((vid) => vid.id === id),
+                  });
+                }
+                dispatch({
+                  type: "HISTORY",
+                  payload: videos?.find((video) => video.id === id),
+                });
+              }}
+            >
               <div className={homeStyle.card}>
-                <figure>
+                <figure style={{ position: "relative" }}>
                   <img
                     src={thumbnail}
                     alt="channel"
                     style={{ width: "100%" }}
                   />
+                  <span className={homeStyle.duration}>{duration}</span>
                 </figure>
+
                 <div className={homeStyle.cardBody}>
                   <div className={homeStyle.cardHead}>
                     <figure>
@@ -41,9 +60,11 @@ export const Home = () => {
                       }}
                     >
                       {channel} &nbsp;
-                      <GoVerified
-                        style={{ position: "absolute", top: "0.12rem" }}
-                      />
+                      {verified && (
+                        <GoVerified
+                          style={{ position: "absolute", top: "0.12rem" }}
+                        />
+                      )}
                     </p>{" "}
                   </div>
                 </div>

@@ -12,12 +12,10 @@ import { ImHome } from "react-icons/im";
 export const Navbar = () => {
   const [isActive, setIsActive] = useState(false);
   const { isUserLoggedIn, logout } = useAuthContext();
-  const {
-    state: { liked, history, watchLater, playlist },
-  } = useVideosContext();
+
   return (
     <nav className={navStyle.navbar}>
-      <div className={navStyle.brandTitle}>Vintage-Mart</div>
+      <div className={navStyle.brandTitle}>Clink-Player</div>
       <button
         className={navStyle.toggleButton}
         onClick={() => setIsActive((prev) => !prev)}
