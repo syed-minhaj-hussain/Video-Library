@@ -52,14 +52,7 @@ export const Home = () => {
                   </div>
                   <div className={homeStyle.cardText}>
                     <p>{intro}</p>
-                    <p
-                      style={{
-                        color: "rgb(170,170,170)",
-                        fontSize: "1rem",
-                        position: "relative",
-                        marginTop: " 0.1rem",
-                      }}
-                    >
+                    <p className={homeStyle.channel}>
                       {channel} &nbsp;
                       {verified && (
                         <GoVerified
