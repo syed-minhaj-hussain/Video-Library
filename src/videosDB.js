@@ -1,6 +1,7 @@
 export const videos = [
   {
     id: 1,
+    intro: "Even if we lose, I want us to go for the win!...",
     name: "Even if we lose, I want us to go for the win! | Dinesh Karthik meets Virat Kohli | Full interview",
     url: "https://youtu.be/RoHEZmHZxzM",
     duration: "33:44",
@@ -11,6 +12,7 @@ export const videos = [
   },
   {
     id: 2,
+    intro: "Wordpress is giving you a business opportunity...",
     name: "Wordpress is giving you a business opportunity",
     url: "https://youtu.be/1fGrZtKkjn8",
     duration: "8:27",
@@ -21,6 +23,7 @@ export const videos = [
   },
   {
     id: 3,
+    intro: "What to do in college? Part II: Actionable Items...",
     name: "What to do in college? Part II: Actionable Items",
     url: "https://youtu.be/TSzgIOXxOZk",
     duration: "7:42",
@@ -31,6 +34,7 @@ export const videos = [
   },
   {
     id: 4,
+    intro: "Animals That Can Kill Themselves...",
     name: "Animals That Can Kill Themselves",
     url: "https://youtu.be/h6NAJygd3Wg",
     duration: "8:01",
@@ -41,6 +45,7 @@ export const videos = [
   },
   {
     id: 5,
+    intro: "Facing 100 MPH BOWLING and hitting 100m sixes!...",
     name: "Facing 100 MPH BOWLING and hitting 100m sixes! Can the weCricket boys SURVIVE!?",
     url: "https://youtu.be/ZSEi5WiWPyY",
     duration: "6:39",
@@ -51,6 +56,7 @@ export const videos = [
   },
   {
     id: 6,
+    intro: "Build 5 Projects With HTML, CSS & JavaScript...",
     name: "Build 5 Projects With HTML, CSS & JavaScript",
     url: "https://youtu.be/JkeyKeK3V24",
     duration: "1:51:00",
@@ -61,6 +67,7 @@ export const videos = [
   },
   {
     id: 7,
+    intro: "Install Prettier in VS Code...",
     name: "Install Prettier in VS Code",
     url: "https://youtu.be/Gmz27agvLYg",
     duration: "5:51",
@@ -71,6 +78,7 @@ export const videos = [
   },
   {
     id: 8,
+    intro: "Suryakumar Yadav reminisces his brutal...",
     name: "Suryakumar Yadav reminisces his brutal knock in the Season 1 final",
     url: "https://youtu.be/ONN-wXyH_Gw",
     duration: "2:08",
@@ -81,6 +89,7 @@ export const videos = [
   },
   {
     id: 9,
+    intro: "Ravi Kumar takes home silver |...",
     name: "Ravi Kumar takes home silver | #Tokyo2020 Highlights",
     url: "https://youtu.be/5TflfS8FsNs",
     duration: "3:05",
@@ -91,6 +100,7 @@ export const videos = [
   },
   {
     id: 10,
+    intro: "Full React Tutorial #19 - Handling...",
     name: "Full React Tutorial #19 - Handling Fetch Errors",
     url: "https://youtu.be/DTBta08fXGU",
     duration: "7:38",
@@ -101,6 +111,7 @@ export const videos = [
   },
   {
     id: 11,
+    intro: "Dinesh Karthik hits 22 runs off Rubel...",
     name: "Dinesh Karthik hits 22 runs off Rubel Hossain - 19th over of Nidahas Trophy Final",
     url: "https://youtu.be/pPwVCIvO7tg",
     duration: "5:48",
@@ -111,6 +122,7 @@ export const videos = [
   },
   {
     id: 12,
+    intro: "Neeraj Chopra qualifies for final...",
     name: "Neeraj Chopra qualifies for final | #Tokyo2020 Highlights",
     url: "https://youtu.be/v5HgIOsw6mk",
     duration: "3:05",
@@ -121,6 +133,7 @@ export const videos = [
   },
   {
     id: 13,
+    intro: "Neymar penalty seals gold for hosts...",
     name: "Neymar penalty seals gold for hosts | Rio 2016 Olympic Games",
     url: "https://youtu.be/-Jmjn_dJt_4",
     duration: "2:10",
@@ -131,6 +144,7 @@ export const videos = [
   },
   {
     id: 14,
+    intro: "5 productivity tips to achieve more in life",
     name: "5 productivity tips to achieve more in life",
     url: "https://youtu.be/Y-E-oNqPIHc",
     duration: "5:42",
@@ -140,7 +154,8 @@ export const videos = [
     verified: true,
   },
   {
-    id: 14,
+    id: 15,
+    intro: "Lasith Malinga's four-ball 4-wicket hat-trick",
     name: "Lasith Malinga's four-ball 4-wicket hat-trick",
     url: "https://youtu.be/nclPaVQmCHc",
     duration: "3:55",
@@ -150,7 +165,8 @@ export const videos = [
     verified: true,
   },
   {
-    id: 15,
+    id: 16,
+    intro: "Sharma Stars In Thriller | SUPER OVER...",
     name: "Sharma Stars In Thriller | SUPER OVER REPLAY | BLACKCAPS v India - 3rd T20, 2020",
     url: "https://youtu.be/PJutG613i7E",
     duration: "6:29",
@@ -160,7 +176,8 @@ export const videos = [
     verified: true,
   },
   {
-    id: 16,
+    id: 17,
+    intro: "When Sport Players Meet Luck",
     name: "When Sport Players Meet Luck",
     url: "https://youtu.be/UannexQjNEo",
     duration: "4:29",
@@ -170,7 +187,8 @@ export const videos = [
     verified: true,
   },
   {
-    id: 17,
+    id: 18,
+    intro: "Modern JavaScript Tutorial #1 - Intro & Setup",
     name: "Modern JavaScript Tutorial #1 - Intro & Setup",
     url: "https://youtu.be/iWOYAxlnaww",
     duration: "12:25",
@@ -180,7 +198,8 @@ export const videos = [
     verified: true,
   },
   {
-    id: 18,
+    id: 19,
+    intro: "CSS Crash Course For Absolute Beginners",
     name: "CSS Crash Course For Absolute Beginners",
     url: "https://youtu.be/yfoY53QXEnI",
     duration: "1:25",
@@ -190,7 +209,8 @@ export const videos = [
     verified: true,
   },
   {
-    id: 19,
+    id: 20,
+    intro: "India's comeback goals vs Germany 🏑...",
     name: "India's comeback goals vs Germany 🏑 | #Tokyo2020 Highlights",
     url: "https://youtu.be/f_Hr5CCaMqw",
     duration: "0:35",

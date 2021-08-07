@@ -1,6 +1,8 @@
 import React from "react";
 import homeStyle from "./home.module.css";
 
+import { GoVerified } from "react-icons/go";
+
 import { useVideosContext } from "../../context/VideosContext";
 import { videos } from "../../videosDB";
 
@@ -10,7 +12,7 @@ export const Home = () => {
     <div className={homeStyle.container}>
       <div className={homeStyle.grid}>
         {videos?.map(
-          ({ id, name, logo, channel, thumbnail, verified, url }) => (
+          ({ id, name, logo, channel, thumbnail, verified, url, intro }) => (
             <div className={homeStyle.card}>
               <figure>
                 <img src={thumbnail} alt="channel" style={{ width: "100%" }} />
@@ -22,10 +24,20 @@ export const Home = () => {
                   </figure>
                 </div>
                 <div className={homeStyle.cardText}>
-                  <p>
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                    Sunt, aperiam?
-                  </p>
+                  <p>{intro}</p>
+                  <p
+                    style={{
+                      color: "rgb(170,170,170)",
+                      fontSize: "1rem",
+                      position: "relative",
+                      marginTop: " 0.1rem",
+                    }}
+                  >
+                    {channel} &nbsp;
+                    <GoVerified
+                      style={{ position: "absolute", top: "0.12rem" }}
+                    />
+                  </p>{" "}
                 </div>
               </div>
             </div>

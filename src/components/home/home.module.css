@@ -16,17 +16,18 @@
 }
 .cardBody {
   margin-top: 0.5rem;
+  padding: 0.25rem;
   position: relative;
   width: 100%;
   display: flex;
   justify-content: space-around;
-  align-items: center;
+  align-items: start;
 }
 .cardHead {
   flex-basis: 20%;
 }
 .cardHead img {
-  width: 80%;
+  width: 70%;
   border-radius: 50%;
 }
 .cardText {
