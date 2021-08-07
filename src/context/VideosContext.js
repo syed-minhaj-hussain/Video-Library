@@ -1,5 +1,5 @@
 import { createContext, useReducer, useContext, useEffect } from "react";
-import { products } from "../productsDB";
+import { videos } from "../videosDB";
 import { reducerFunc } from "../utilities";
 
 const VideosContext = createContext();
@@ -10,6 +10,7 @@ export const WishCartProvider = ({ children }) => {
     history: [],
     playlist: [],
     watchLater: [],
+    videos,
   });
 
   //   useEffect(() => {
