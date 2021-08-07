@@ -22,10 +22,11 @@ export const Home = () => {
               className={homeStyle.link}
               onClick={() => {
                 if (history.find((vid) => vid.id === id)) {
-                  return dispatch({
-                    type: "CHANGE-HISTORY",
-                    payload: videos?.find((vid) => vid.id === id),
-                  });
+                  // return dispatch({
+                  //   type: "CHANGE-HISTORY",
+                  //   payload: videos?.find((vid) => vid.id === id),
+                  // });
+                  return console.log("In History");
                 }
                 dispatch({
                   type: "HISTORY",

@@ -10,6 +10,7 @@ import { FaListAlt } from "react-icons/fa";
 export const VideoPlayer = () => {
   const {
     state: { videos, liked, playlist, watchLater },
+    dispatch,
   } = useVideosContext();
   const { id } = useParams();
 
@@ -38,13 +39,43 @@ export const VideoPlayer = () => {
           </div>
           <div>
             <span className={videoStyle.right}>
-              <AiFillLike /> Liked
+              <button
+                className={videoStyle.btn}
+                onClick={() => {
+                  if (liked?.find((vid) => vid.id === Number(id))) {
+                    return console.log("VIDEO-ALREADY-LIKED");
+                  }
+                  dispatch({
+                    type: "LIKE",
+                    payload: videos?.find((vid) => vid.id === Number(id)),
+                  });
+                }}
+              >
+                <AiFillLike /> Liked
+              </button>{" "}
             </span>
             <span className={videoStyle.right}>
-              <MdWatchLater /> Later
+              <button
+                className={videoStyle.btn}
+                onClick={() => {
+                  if (watchLater?.find((vid) => vid.id === Number(id))) {
+                    return console.log("Already In List");
+                  }
+                  dispatch({
+                    type: "WATCH-LATER",
+                    payload: videos?.find((vid) => vid.id === Number(id)),
+                  });
+                }}
+              >
+                {" "}
+                <MdWatchLater /> Later
+              </button>{" "}
             </span>
             <span className={videoStyle.right}>
-              <FaListAlt /> My-Playlist
+              <button className={videoStyle.btn}>
+                {" "}
+                <FaListAlt /> My-Playlist
+              </button>
             </span>
           </div>
         </div>
