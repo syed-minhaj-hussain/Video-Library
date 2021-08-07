@@ -3,7 +3,7 @@ import videoStyle from "./video.module.css";
 import ReactPlayer from "react-player/lazy";
 import { useParams } from "react-router-dom";
 import { useVideosContext } from "../../context/VideosContext";
-import { AiFillEye, AiFillLike, AiOutlineLike } from "react-icons/ai";
+import { AiFillEye, AiFillLike } from "react-icons/ai";
 import { MdWatchLater } from "react-icons/md";
 import { FaListAlt } from "react-icons/fa";
 
@@ -24,20 +24,43 @@ export const VideoPlayer = () => {
           url={findVideoUrlById?.url}
           playing
           controls
-          className={videoStyle.player}
           width="80%"
           height="80%"
+          className={videoStyle.large}
         />
       </>
+      <>
+        <ReactPlayer
+          url={findVideoUrlById?.url}
+          playing
+          controls
+          width="90%"
+          height="58%"
+          className={videoStyle.medium}
+        />
+      </>
+      <>
+        <ReactPlayer
+          url={findVideoUrlById?.url}
+          playing
+          controls
+          width="100%"
+          height="38%"
+          // style={{ marginLeft: "6rem" }}
+          className={videoStyle.mobile}
+        />
+      </>
+
       <div className={videoStyle.videoBody}>
         <>
           <p className={videoStyle.title}>{findVideoUrlById?.name}</p>
         </>
+
         <div className={videoStyle.subTitle}>
           <div>
             15k <AiFillEye /> | 1 month ago
           </div>
-          <div>
+          <div className={videoStyle.icons}>
             <span className={videoStyle.right}>
               <button
                 className={videoStyle.btn}
@@ -51,7 +74,7 @@ export const VideoPlayer = () => {
                   });
                 }}
               >
-                <AiFillLike /> Liked
+                <AiFillLike /> <br /> Liked
               </button>{" "}
             </span>
             <span className={videoStyle.right}>
@@ -68,13 +91,13 @@ export const VideoPlayer = () => {
                 }}
               >
                 {" "}
-                <MdWatchLater /> Later
+                <MdWatchLater /> <br /> Later
               </button>{" "}
             </span>
             <span className={videoStyle.right}>
               <button className={videoStyle.btn}>
                 {" "}
-                <FaListAlt /> My-Playlist
+                <FaListAlt /> <br /> My-Playlist
               </button>
             </span>
           </div>
