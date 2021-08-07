@@ -24,85 +24,64 @@ export const VideoPlayer = () => {
           url={findVideoUrlById?.url}
           playing
           controls
-          width="80%"
-          height="80%"
-          className={videoStyle.large}
+          width="95%"
+          height="60%"
         />
       </>
       <>
-        <ReactPlayer
-          url={findVideoUrlById?.url}
-          playing
-          controls
-          width="90%"
-          height="58%"
-          className={videoStyle.medium}
-        />
-      </>
-      <>
-        <ReactPlayer
-          url={findVideoUrlById?.url}
-          playing
-          controls
-          width="100%"
-          height="38%"
-          // style={{ marginLeft: "6rem" }}
-          className={videoStyle.mobile}
-        />
-      </>
+        <div className={videoStyle.videoBody}>
+          <>
+            <p className={videoStyle.title}>{findVideoUrlById?.name}</p>
+          </>
 
-      <div className={videoStyle.videoBody}>
-        <>
-          <p className={videoStyle.title}>{findVideoUrlById?.name}</p>
-        </>
-
-        <div className={videoStyle.subTitle}>
-          <div>
-            15k <AiFillEye /> | 1 month ago
-          </div>
-          <div className={videoStyle.icons}>
-            <span className={videoStyle.right}>
-              <button
-                className={videoStyle.btn}
-                onClick={() => {
-                  if (liked?.find((vid) => vid.id === Number(id))) {
-                    return console.log("VIDEO-ALREADY-LIKED");
-                  }
-                  dispatch({
-                    type: "LIKE",
-                    payload: videos?.find((vid) => vid.id === Number(id)),
-                  });
-                }}
-              >
-                <AiFillLike /> <br /> Liked
-              </button>{" "}
-            </span>
-            <span className={videoStyle.right}>
-              <button
-                className={videoStyle.btn}
-                onClick={() => {
-                  if (watchLater?.find((vid) => vid.id === Number(id))) {
-                    return console.log("Already In List");
-                  }
-                  dispatch({
-                    type: "WATCH-LATER",
-                    payload: videos?.find((vid) => vid.id === Number(id)),
-                  });
-                }}
-              >
-                {" "}
-                <MdWatchLater /> <br /> Later
-              </button>{" "}
-            </span>
-            <span className={videoStyle.right}>
-              <button className={videoStyle.btn}>
-                {" "}
-                <FaListAlt /> <br /> My-Playlist
-              </button>
-            </span>
+          <div className={videoStyle.subTitle}>
+            <div>
+              15k <AiFillEye /> | 1 month ago
+            </div>
+            <div className={videoStyle.icons}>
+              <span className={videoStyle.right}>
+                <button
+                  className={videoStyle.btn}
+                  onClick={() => {
+                    if (liked?.find((vid) => vid.id === Number(id))) {
+                      return console.log("VIDEO-ALREADY-LIKED");
+                    }
+                    dispatch({
+                      type: "LIKE",
+                      payload: videos?.find((vid) => vid.id === Number(id)),
+                    });
+                  }}
+                >
+                  <AiFillLike /> <br /> Liked
+                </button>{" "}
+              </span>
+              <span className={videoStyle.right}>
+                <button
+                  className={videoStyle.btn}
+                  onClick={() => {
+                    if (watchLater?.find((vid) => vid.id === Number(id))) {
+                      return console.log("Already In List");
+                    }
+                    dispatch({
+                      type: "WATCH-LATER",
+                      payload: videos?.find((vid) => vid.id === Number(id)),
+                    });
+                  }}
+                >
+                  {" "}
+                  <MdWatchLater /> <br /> Later
+                </button>{" "}
+              </span>
+              <span className={videoStyle.right}>
+                <button className={videoStyle.btn}>
+                  {" "}
+                  <FaListAlt /> <br /> My-Playlist
+                </button>
+              </span>
+            </div>
           </div>
         </div>
-      </div>
+      </>
     </div>
   );
 };

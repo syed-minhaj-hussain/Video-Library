@@ -42,26 +42,11 @@
   border: none;
   font-size: 1.2rem;
 }
-.large {
-  display: block;
-}
-.medium,
-.mobile {
-  display: none;
-}
 
 @media (max-width: 768px) {
   .container {
     max-width: 768px;
     margin: 1rem auto;
-  }
-  .large,
-  .mobile {
-    display: none;
-  }
-  .medium {
-    display: block;
-    margin-left: 5%;
   }
 }
 @media (max-width: 480px) {
@@ -69,13 +54,7 @@
     max-width: 480px;
     margin: 1rem auto;
   }
-  .large,
-  .medium {
-    display: none;
-  }
-  .mobile {
-    display: block;
-  }
+
   .subTitle {
     flex-direction: column;
   }
