@@ -1,11 +1,11 @@
 import { createContext, useReducer, useContext, useEffect } from "react";
 import { videos } from "../videosDB";
-import { reducerFunc } from "../utilities";
+// import { reducerFunc } from "../utilities";
 
 const VideosContext = createContext();
 
 export const VideosProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(reducerFunc, {
+  const [state, dispatch] = useReducer(() => {}, {
     liked: [],
     history: [],
     playlist: [],

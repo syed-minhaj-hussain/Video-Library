@@ -3,9 +3,10 @@ import { NavLink } from "react-router-dom";
 import navStyle from "./nav.module.css";
 import { useAuthContext } from "../../context/AuthContext";
 import { useVideosContext } from "../../context/VideosContext";
-import { FaShoppingCart } from "react-icons/fa";
-import { HiOutlineHeart } from "react-icons/hi";
-import { BiShoppingBag } from "react-icons/bi";
+import { FaHistory } from "react-icons/fa";
+import { FaListAlt } from "react-icons/fa";
+import { MdWatchLater } from "react-icons/md";
+import { AiFillLike } from "react-icons/ai";
 import { ImHome } from "react-icons/im";
 
 export const Navbar = () => {
@@ -51,7 +52,7 @@ export const Navbar = () => {
           </li>
           <li>
             <NavLink
-              to="/products"
+              to="/likedVideos"
               activeStyle={{
                 fontWeight: "bold",
                 color: "#333",
@@ -61,12 +62,12 @@ export const Navbar = () => {
               className={navStyle.navLinks}
               onClick={() => setIsActive((prev) => !prev)}
             >
-              <BiShoppingBag style={{ fontSize: "1.25rem" }} />
+              <AiFillLike style={{ fontSize: "1.25rem" }} />
             </NavLink>
           </li>
           <li>
             <NavLink
-              to="/cart"
+              to="/history"
               activeStyle={{
                 fontWeight: "bold",
                 color: "#333",
@@ -77,12 +78,12 @@ export const Navbar = () => {
               style={{ position: "relative" }}
               onClick={() => setIsActive((prev) => !prev)}
             >
-              <FaShoppingCart style={{ fontSize: "1.1rem" }} />
+              <FaHistory style={{ fontSize: "1.1rem" }} />
             </NavLink>
           </li>
           <li>
             <NavLink
-              to="/wishlist"
+              to="/watchLater"
               activeStyle={{
                 fontWeight: "bold",
                 color: "#333",
@@ -93,7 +94,23 @@ export const Navbar = () => {
               style={{ position: "relative" }}
               onClick={() => setIsActive((prev) => !prev)}
             >
-              <HiOutlineHeart style={{ fontSize: "1.25rem" }} />
+              <MdWatchLater style={{ fontSize: "1.25rem" }} />
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/playlist"
+              activeStyle={{
+                fontWeight: "bold",
+                color: "#333",
+                backgroundColor: "rgb(220,152,20)",
+                height: "100%",
+              }}
+              className={navStyle.navLinks}
+              style={{ position: "relative" }}
+              onClick={() => setIsActive((prev) => !prev)}
+            >
+              <FaListAlt style={{ fontSize: "1.25rem" }} />
             </NavLink>
           </li>
           <li className={`${isUserLoggedIn ? `${navStyle.logout}` : ""} `}>
