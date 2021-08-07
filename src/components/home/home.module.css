@@ -13,6 +13,7 @@
   padding: 0.25rem;
   /* background-color: #555; */
   height: 100%;
+  text-decoration: none;
 }
 .cardBody {
   margin-top: 0.5rem;
@@ -35,4 +36,11 @@
   color: #fff;
   font-size: 0.9rem;
   font-weight: 590;
+}
+.link {
+  text-decoration: none;
+  border: 0.1rem solid rgb(24, 24, 24);
+}
+.link:hover {
+  border: 0.1rem solid #333;
 }
