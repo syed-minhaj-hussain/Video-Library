@@ -83,7 +83,7 @@
   .grid {
     grid-template-columns: repeat(1, 1fr);
     padding: 0.14rem;
-    grid-gap: 0.25rem;
+    grid-gap: 0.1rem;
   }
   .cardText {
     font-size: 0.8rem;
@@ -92,5 +92,9 @@
   .channel {
     font-size: 0.9rem;
     color: rgb(170, 170, 170);
+  }
+  .cardBody {
+    margin-top: 0.2rem;
+    padding: 0.2rem;
   }
 }
