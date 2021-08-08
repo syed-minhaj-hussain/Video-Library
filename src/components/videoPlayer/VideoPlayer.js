@@ -17,6 +17,8 @@ export const VideoPlayer = () => {
   console.log({ id });
   const findVideoUrlById = videos?.find((video) => video.id === Number(id));
   // console.log(findVideoUrlById);
+  const isVideoLiked = liked?.find((vid) => vid.id === Number(id));
+  const isVideoInWatchLater = watchLater?.find((vid) => vid.id === Number(id));
   return (
     <div className={videoStyle.container}>
       <div className={videoStyle.wrapper}>
@@ -44,7 +46,11 @@ export const VideoPlayer = () => {
                 <button
                   className={videoStyle.btn}
                   onClick={() => {
-                    if (liked?.find((vid) => vid.id === Number(id))) {
+                    if (isVideoLiked) {
+                      dispatch({
+                        type: "REMOVE-FROM-LIKED",
+                        payload: Number(id),
+                      });
                       return console.log("VIDEO-ALREADY-LIKED");
                     }
                     dispatch({
@@ -53,14 +59,20 @@ export const VideoPlayer = () => {
                     });
                   }}
                 >
-                  <AiFillLike />
+                  <AiFillLike
+                    style={{ color: `${isVideoLiked ? "red" : "#fff"}` }}
+                  />
                 </button>
               </span>
               <span className={videoStyle.icons}>
                 <button
                   className={videoStyle.btn}
                   onClick={() => {
-                    if (watchLater?.find((vid) => vid.id === Number(id))) {
+                    if (isVideoInWatchLater) {
+                      dispatch({
+                        type: "REMOVE-FROM-WATCH-LATER",
+                        payload: Number(id),
+                      });
                       return console.log("Already In List");
                     }
                     dispatch({
@@ -69,7 +81,9 @@ export const VideoPlayer = () => {
                     });
                   }}
                 >
-                  <MdWatchLater />
+                  <MdWatchLater
+                    style={{ color: `${isVideoInWatchLater ? "red" : "#fff"}` }}
+                  />
                 </button>
               </span>
               <span className={videoStyle.icons}>

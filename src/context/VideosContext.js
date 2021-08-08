@@ -13,30 +13,49 @@ export const VideosProvider = ({ children }) => {
     videos,
   });
 
-  //   useEffect(() => {
-  //     dispatch({
-  //       type: "CART-UPDATED",
-  //       payload: JSON.parse(localStorage.getItem("myCart")) || [],
-  //     });
-  //   }, []);
+  useEffect(() => {
+    dispatch({
+      type: "LIKED-UPDATED",
+      payload: JSON.parse(localStorage.getItem("myLiked")) || [],
+    });
+  }, []);
 
-  //   useEffect(() => {
-  //     dispatch({
-  //       type: "WISHLIST-UPDATED",
-  //       payload: JSON.parse(localStorage.getItem("myWishlist")) || [],
-  //     });
-  //   }, []);
+  useEffect(() => {
+    dispatch({
+      type: "HISTORY-UPDATED",
+      payload: JSON.parse(localStorage.getItem("myHistory")) || [],
+    });
+  }, []);
 
-  //   useEffect(() => {
-  //     if (state.cart) {
-  //       localStorage.setItem("myCart", JSON.stringify(state.cart));
-  //     }
-  //   }, [state.cart]);
-  //   useEffect(() => {
-  //     if (state.wishlist) {
-  //       localStorage.setItem("myWishlist", JSON.stringify(state.wishlist));
-  //     }
-  //   }, [state.wishlist]);
+  useEffect(() => {
+    dispatch({
+      type: "WATCH-LATER-UPDATED",
+      payload: JSON.parse(localStorage.getItem("myWatchLater")) || [],
+    });
+  }, []);
+
+  useEffect(
+    () =>
+      dispatch({
+        type: "CHANGE-HISTORY-UPDATED",
+        payload: JSON.parse(localStorage.getItem("myHistory")) || [],
+      }),
+    []
+  );
+  useEffect(
+    () => localStorage.setItem("myHistory", JSON.stringify(state.history)),
+    [state.history]
+  );
+
+  useEffect(
+    () => localStorage.setItem("myLiked", JSON.stringify(state.liked)),
+    [state.liked]
+  );
+  useEffect(
+    () =>
+      localStorage.setItem("myWatchLater", JSON.stringify(state.watchLater)),
+    [state.watchLater]
+  );
 
   return (
     <VideosContext.Provider value={{ state, dispatch }}>
