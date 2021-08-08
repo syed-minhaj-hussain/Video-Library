@@ -6,8 +6,8 @@ import logStyle from "./login.module.css";
 
 export const Login = () => {
   const { isUserLoggedIn, login } = useAuthContext();
-  const [text, setText] = useState("");
-  const [password, setPassword] = useState("");
+  const [text, setText] = useState("Test");
+  const [password, setPassword] = useState("Success");
   const { state } = useLocation();
   console.log({ isUserLoggedIn });
   return (
