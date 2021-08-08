@@ -22,6 +22,7 @@ function App() {
     if (response?.status === true) {
       setIsUserLoggedIn(true);
       navigate(response?.path);
+      console.log(response?.path);
     }
   }, []);
   return (
