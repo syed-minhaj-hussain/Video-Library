@@ -14,6 +14,7 @@ export const LikedVideos = () => {
   console.log({ liked });
   return (
     <div className={likedStyle.container}>
+      <h1 className={likedStyle.title}>Videos You've Liked!</h1>
       <div className={likedStyle.grid}>
         {liked?.map(({ id, thumbnail, intro, channel }) => (
           <div className={likedStyle.main}>

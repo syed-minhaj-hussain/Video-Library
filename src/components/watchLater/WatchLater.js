@@ -14,6 +14,7 @@ export const WatchLater = () => {
   console.log({ watchLater });
   return (
     <div className={watchLaterStyle.container}>
+      <h1 className={watchLaterStyle.title}>Watch When You're Free!</h1>
       <div className={watchLaterStyle.grid}>
         {watchLater?.map(({ id, thumbnail, intro, channel }) => (
           <div className={watchLaterStyle.main}>

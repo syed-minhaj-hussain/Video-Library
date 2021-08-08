@@ -14,6 +14,7 @@ export const History = () => {
   console.log({ history });
   return (
     <div className={historyStyle.container}>
+      <h1 className={historyStyle.title}>Your Watch History!</h1>
       <div className={historyStyle.grid}>
         {history?.map(({ id, thumbnail, intro, channel }) => (
           <div className={historyStyle.main}>
