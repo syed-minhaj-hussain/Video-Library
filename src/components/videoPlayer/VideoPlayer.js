@@ -11,14 +11,13 @@ import { Playlist } from "../playlist/Playlist";
 export const VideoPlayer = () => {
   const [show, setShow] = useState(false);
   const {
-    state: { videos, liked, playlist, watchLater },
+    state: { videos, liked, watchLater },
     dispatch,
   } = useVideosContext();
   const { id } = useParams();
 
-  console.log({ id });
   const findVideoById = videos?.find((video) => video.id === Number(id));
-  // console.log(findVideoById);
+
   const isVideoLiked = liked?.find((vid) => vid.id === Number(id));
   const isVideoInWatchLater = watchLater?.find((vid) => vid.id === Number(id));
   return (
@@ -104,7 +103,7 @@ export const VideoPlayer = () => {
         style={{ display: `${show ? "block" : "none"}` }}
         className={videoStyle.list}
       >
-        <Playlist video={findVideoById} id={Number(id)} />
+        <Playlist setShow={setShow} video={findVideoById} id={Number(id)} />
       </div>
     </div>
   );

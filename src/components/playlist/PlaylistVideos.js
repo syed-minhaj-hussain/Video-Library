@@ -1,5 +1,54 @@
 import React from "react";
+import { useVideosContext } from "../../context/VideosContext";
+import likedStyle from "../history/history.module.css";
+import { TiDelete } from "react-icons/ti";
+import { Link } from "react-router-dom";
 
-export const PlaylistVideos = () => {
-  return <div></div>;
+export const PlaylistVideos = ({ name }) => {
+  const {
+    state: { playlist },
+    dispatch,
+  } = useVideosContext();
+  const list = playlist.find((vid) => vid.name === name);
+  return (
+    <div className={likedStyle.container}>
+      <h1
+        style={{
+          fontSize: "2rem",
+          textAlign: "center",
+          fontWeight: "500",
+          color: "#fff",
+          textTransform: "capitalize",
+        }}
+      >
+        {name}
+      </h1>
+      <div className={likedStyle.grid}>
+        {list.videos?.map(({ id, thumbnail, intro, channel }) => (
+          <div className={likedStyle.main} key={id}>
+            <Link to={`/watch/${id}`} className={likedStyle.link} key={id}>
+              <div className={likedStyle.card}>
+                <figure>
+                  <img src={thumbnail} alt={channel} />
+                </figure>
+                <div className={likedStyle.cardBody}>
+                  <p className={likedStyle.intro}>{intro}</p>
+                  <p className={likedStyle.channel}>{channel}</p>
+                </div>
+              </div>
+            </Link>
+            <TiDelete
+              className={likedStyle.delete}
+              onClick={() =>
+                dispatch({
+                  type: "REMOVE-FROM-PLAYLIST",
+                  payload: { id, name, list },
+                })
+              }
+            />
+          </div>
+        ))}
+      </div>
+    </div>
+  );
 };

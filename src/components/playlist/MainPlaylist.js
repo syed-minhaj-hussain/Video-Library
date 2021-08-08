@@ -5,16 +5,16 @@ import { PlaylistNames } from "./PlaylistNames";
 import { PlaylistVideos } from "./PlaylistVideos";
 
 export const MainPlaylist = () => {
-  const [name, setName] = useState();
   const {
     state: { playlist },
   } = useVideosContext();
   const getPlayListNames = playlist?.map(({ name }) => name);
   console.log(getPlayListNames);
+  const [name, setName] = useState(getPlayListNames[0]);
   return (
     <div className={mainStyle.container}>
       <PlaylistNames setName={setName} />
-      <PlaylistVideos />
+      <PlaylistVideos name={name} />
     </div>
   );
 };

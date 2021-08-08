@@ -56,6 +56,20 @@ export const reducerFunc = (state, action) => {
             : pList
         ),
       };
+    case "REMOVE-FROM-PLAYLIST":
+      return {
+        ...state,
+        playlist: state.playlist.map((list) =>
+          list.name === action.payload.name
+            ? {
+                ...action.payload.list,
+                videos: action.payload.list.videos.filter(
+                  (vid) => vid.id !== action.payload.id
+                ),
+              }
+            : list
+        ),
+      };
     case "PLAYLIST-UPDATED":
       return { ...state, playlist: action.payload };
 

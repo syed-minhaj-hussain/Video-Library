@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import { useVideosContext } from "../../context/VideosContext";
 import playStyle from "./playlist.module.css";
 import { v4 as uuidv4 } from "uuid";
+import { TiDelete } from "react-icons/ti";
 
-export const Playlist = ({ video, id }) => {
+export const Playlist = ({ video, id, setShow }) => {
   const [text, setText] = useState("");
-  const [value, setValue] = useState("");
   const {
     state: { playlist },
     dispatch,
@@ -14,6 +14,10 @@ export const Playlist = ({ video, id }) => {
   console.log({ playlist });
   return (
     <div className={playStyle.list}>
+      <TiDelete
+        className={playStyle.del}
+        onClick={() => setShow((prev) => !prev)}
+      />
       <form
         onSubmit={(e) => {
           e.preventDefault();
@@ -48,7 +52,7 @@ export const Playlist = ({ video, id }) => {
             margin: "0.1rem",
           }}
         >
-          <p>
+          <p style={{ fontSize: "1.5rem", fontWeight: "400" }}>
             {" "}
             {list?.name} &nbsp;&nbsp;&nbsp;{" "}
             <button
@@ -60,6 +64,13 @@ export const Playlist = ({ video, id }) => {
                 console.log({ list });
               }}
               disabled={list.videos.find((vid) => vid.id === id) ? true : false}
+              style={{
+                padding: "0.2rem 1rem",
+                fontSize: "1rem",
+                fontWeight: "600",
+                color: "#000",
+                float: "right",
+              }}
             >
               Add
             </button>
