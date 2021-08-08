@@ -1,20 +1,20 @@
 .container {
   max-width: 1100px;
   margin: 1rem auto;
-  height: 100vh;
-  display: flex;
+  /* height: 100vh; */
+  /* display: flex;
   justify-content: center;
-  flex-direction: column;
+  flex-direction: column; */
   /* overflow: hidden; */
 }
 .wrapper {
   position: relative;
-  padding-top: 52.25%;
+  padding-top: 56.25%;
 }
 
 .player {
   position: absolute;
-  top: 1.2rem;
+  top: 0;
   left: 0;
 }
 .videoBody {
@@ -78,7 +78,9 @@
     max-width: 480px;
     margin: 1rem auto;
   }
-
+  .player {
+    top: 0rem;
+  }
   .subTitle {
     flex-direction: column;
   }
