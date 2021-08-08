@@ -11,6 +11,7 @@
   align-items: center;
   height: 90vh;
   width: 100vw;
+  color: #fff;
 }
 .card {
   width: 420px;
@@ -20,6 +21,8 @@
   padding: 1rem;
   font-size: 1.2rem;
   border-radius: 1rem;
+  background-color: #fff;
+  color: #000;
 }
 .inputs {
   font-weight: 500;
