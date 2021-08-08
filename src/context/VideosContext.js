@@ -42,6 +42,16 @@ export const VideosProvider = ({ children }) => {
       }),
     []
   );
+
+  useEffect(
+    () =>
+      dispatch({
+        type: "PLAYLIST-UPDATED",
+        payload: JSON.parse(localStorage.getItem("myPlaylist")) || [],
+      }),
+    []
+  );
+
   useEffect(
     () => localStorage.setItem("myHistory", JSON.stringify(state.history)),
     [state.history]
@@ -55,6 +65,10 @@ export const VideosProvider = ({ children }) => {
     () =>
       localStorage.setItem("myWatchLater", JSON.stringify(state.watchLater)),
     [state.watchLater]
+  );
+  useEffect(
+    () => localStorage.setItem("myPlaylist", JSON.stringify(state.playlist)),
+    [state.playlist]
   );
 
   return (

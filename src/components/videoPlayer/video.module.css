@@ -1,6 +1,8 @@
 .container {
   max-width: 1100px;
   margin: 1rem auto;
+  position: relative;
+  z-index: 2;
   /* height: 100vh; */
   /* display: flex;
   justify-content: center;
@@ -57,7 +59,12 @@
 .btn:hover {
   color: azure;
 }
-
+.list {
+  position: absolute;
+  top: 50%;
+  left: 30%;
+  z-index: 10;
+}
 @media (max-width: 768px) {
   .container {
     max-width: 768px;

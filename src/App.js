@@ -10,7 +10,7 @@ import { VideoPlayer } from "./components/videoPlayer/VideoPlayer";
 import { PrivateRoute } from "./components/privateRoutes/PrivateRoute";
 import { History } from "./components/history/History";
 import { LikedVideos } from "./components/liked/LikedVideos";
-import { Playlist } from "./components/playlist/Playlist";
+import { MainPlaylist } from "./components/playlist/MainPlaylist";
 import { WatchLater } from "./components/watchLater/WatchLater";
 import { Footer } from "./components/footer/Footer";
 
@@ -46,7 +46,7 @@ function App() {
         <PrivateRoute
           isUserLoggedIn={isUserLoggedIn}
           path="/playlist"
-          element={<Playlist />}
+          element={<MainPlaylist />}
         />
         <PrivateRoute
           isUserLoggedIn={isUserLoggedIn}

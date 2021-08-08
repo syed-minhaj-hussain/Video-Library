@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import videoStyle from "./video.module.css";
 import ReactPlayer from "react-player/lazy";
 import { useParams } from "react-router-dom";
@@ -6,8 +6,10 @@ import { useVideosContext } from "../../context/VideosContext";
 import { AiFillEye, AiFillLike } from "react-icons/ai";
 import { MdWatchLater } from "react-icons/md";
 import { FaListAlt } from "react-icons/fa";
+import { Playlist } from "../playlist/Playlist";
 
 export const VideoPlayer = () => {
+  const [show, setShow] = useState(false);
   const {
     state: { videos, liked, playlist, watchLater },
     dispatch,
@@ -15,15 +17,15 @@ export const VideoPlayer = () => {
   const { id } = useParams();
 
   console.log({ id });
-  const findVideoUrlById = videos?.find((video) => video.id === Number(id));
-  // console.log(findVideoUrlById);
+  const findVideoById = videos?.find((video) => video.id === Number(id));
+  // console.log(findVideoById);
   const isVideoLiked = liked?.find((vid) => vid.id === Number(id));
   const isVideoInWatchLater = watchLater?.find((vid) => vid.id === Number(id));
   return (
     <div className={videoStyle.container}>
       <div className={videoStyle.wrapper}>
         <ReactPlayer
-          url={findVideoUrlById?.url}
+          url={findVideoById?.url}
           playing
           controls
           width="100%"
@@ -34,7 +36,7 @@ export const VideoPlayer = () => {
       <>
         <div className={videoStyle.videoBody}>
           <>
-            <p className={videoStyle.title}>{findVideoUrlById?.name}</p>
+            <p className={videoStyle.title}>{findVideoById?.name}</p>
           </>
 
           <div className={videoStyle.subTitle}>
@@ -87,7 +89,10 @@ export const VideoPlayer = () => {
                 </button>
               </span>
               <span className={videoStyle.icons}>
-                <button className={videoStyle.btn}>
+                <button
+                  className={videoStyle.btn}
+                  onClick={() => setShow((prev) => !prev)}
+                >
                   <FaListAlt />
                 </button>
               </span>
@@ -95,6 +100,12 @@ export const VideoPlayer = () => {
           </div>
         </div>
       </>
+      <div
+        style={{ display: `${show ? "block" : "none"}` }}
+        className={videoStyle.list}
+      >
+        <Playlist video={findVideoById} id={Number(id)} />
+      </div>
     </div>
   );
 };
