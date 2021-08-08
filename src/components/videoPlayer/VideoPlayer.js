@@ -19,15 +19,16 @@ export const VideoPlayer = () => {
   // console.log(findVideoUrlById);
   return (
     <div className={videoStyle.container}>
-      <>
+      <div className={videoStyle.wrapper}>
         <ReactPlayer
           url={findVideoUrlById?.url}
           playing
           controls
-          width="95%"
-          height="60%"
+          width="100%"
+          height="100%"
+          className={videoStyle.player}
         />
-      </>
+      </div>
       <>
         <div className={videoStyle.videoBody}>
           <>
@@ -35,11 +36,11 @@ export const VideoPlayer = () => {
           </>
 
           <div className={videoStyle.subTitle}>
-            <div>
+            <div className={videoStyle.left}>
               15k <AiFillEye /> | 1 month ago
             </div>
-            <div className={videoStyle.icons}>
-              <span className={videoStyle.right}>
+            <div className={videoStyle.right}>
+              <span className={videoStyle.icons}>
                 <button
                   className={videoStyle.btn}
                   onClick={() => {
@@ -52,10 +53,10 @@ export const VideoPlayer = () => {
                     });
                   }}
                 >
-                  <AiFillLike /> <br /> Liked
-                </button>{" "}
+                  <AiFillLike />
+                </button>
               </span>
-              <span className={videoStyle.right}>
+              <span className={videoStyle.icons}>
                 <button
                   className={videoStyle.btn}
                   onClick={() => {
@@ -68,14 +69,12 @@ export const VideoPlayer = () => {
                     });
                   }}
                 >
-                  {" "}
-                  <MdWatchLater /> <br /> Later
-                </button>{" "}
+                  <MdWatchLater />
+                </button>
               </span>
-              <span className={videoStyle.right}>
+              <span className={videoStyle.icons}>
                 <button className={videoStyle.btn}>
-                  {" "}
-                  <FaListAlt /> <br /> My-Playlist
+                  <FaListAlt />
                 </button>
               </span>
             </div>

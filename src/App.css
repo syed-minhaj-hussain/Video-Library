@@ -13,3 +13,7 @@ h1 {
   margin-block-start: 0px;
   margin-block-end: 0px;
 }
+Footer {
+  position: absolute;
+  bottom: 0;
+}
