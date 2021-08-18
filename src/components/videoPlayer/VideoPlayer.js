@@ -14,12 +14,11 @@ export const VideoPlayer = () => {
     state: { videos, liked, watchLater },
     dispatch,
   } = useVideosContext();
-  const { id } = useParams();
+  const { _id } = useParams();
 
-  const findVideoById = videos?.find((video) => video.id === Number(id));
-
-  const isVideoLiked = liked?.find((vid) => vid.id === Number(id));
-  const isVideoInWatchLater = watchLater?.find((vid) => vid.id === Number(id));
+  const findVideoById = videos?.find((video) => video._id === _id);
+  const isVideoLiked = liked?.find((vid) => vid._id === _id);
+  const isVideoInWatchLater = watchLater?.find((vid) => vid._id === _id);
   return (
     <div className={videoStyle.container}>
       <div className={videoStyle.wrapper}>
@@ -50,13 +49,13 @@ export const VideoPlayer = () => {
                     if (isVideoLiked) {
                       dispatch({
                         type: "REMOVE-FROM-LIKED",
-                        payload: Number(id),
+                        payload: _id,
                       });
                       return console.log("VIDEO-ALREADY-LIKED");
                     }
                     dispatch({
                       type: "LIKE",
-                      payload: videos?.find((vid) => vid.id === Number(id)),
+                      payload: videos?.find((vid) => vid.id === _id),
                     });
                   }}
                 >
@@ -72,13 +71,13 @@ export const VideoPlayer = () => {
                     if (isVideoInWatchLater) {
                       dispatch({
                         type: "REMOVE-FROM-WATCH-LATER",
-                        payload: Number(id),
+                        payload: _id,
                       });
                       return console.log("Already In List");
                     }
                     dispatch({
                       type: "WATCH-LATER",
-                      payload: videos?.find((vid) => vid.id === Number(id)),
+                      payload: videos?.find((vid) => vid._id === _id),
                     });
                   }}
                 >
@@ -103,7 +102,7 @@ export const VideoPlayer = () => {
         style={{ display: `${show ? "block" : "none"}` }}
         className={videoStyle.list}
       >
-        <Playlist setShow={setShow} video={findVideoById} id={Number(id)} />
+        <Playlist setShow={setShow} video={findVideoById} id={_id} />
       </div>
     </div>
   );

@@ -1,5 +1,11 @@
-import { createContext, useReducer, useContext, useEffect } from "react";
-import { videos } from "../videosDB";
+import {
+  createContext,
+  useReducer,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
+import { axios } from "axios";
 import { reducerFunc } from "../utilities";
 
 const VideosContext = createContext();
@@ -10,9 +16,8 @@ export const VideosProvider = ({ children }) => {
     history: [],
     playlist: [],
     watchLater: [],
-    videos,
+    videos: null,
   });
-
   useEffect(() => {
     dispatch({
       type: "LIKED-UPDATED",

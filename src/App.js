@@ -13,9 +13,16 @@ import { LikedVideos } from "./components/liked/LikedVideos";
 import { MainPlaylist } from "./components/playlist/MainPlaylist";
 import { WatchLater } from "./components/watchLater/WatchLater";
 import { Footer } from "./components/footer/Footer";
+import axios from "axios";
+import { useVideosContext } from "./context/VideosContext";
 
 function App() {
   const { isUserLoggedIn, setIsUserLoggedIn } = useAuthContext();
+  const {
+    state: { videos },
+    dispatch,
+  } = useVideosContext();
+  console.log(videos);
   const navigate = useNavigate();
   useEffect(() => {
     const response = JSON.parse(localStorage.getItem("loginStatus"));
@@ -25,12 +32,25 @@ function App() {
       console.log(response?.path);
     }
   }, []);
+  useEffect(() => {
+    (async function () {
+      try {
+        const response = await axios.get(
+          "https://clink-player-backend.herokuapp.com/videos"
+        );
+        dispatch({ type: "UPLOAD-VIDEOS", payload: response?.data?.videos });
+      } catch (err) {
+        console.log({ err });
+      }
+    })();
+  }, []);
+
   return (
     <div className="App">
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/watch/:id" element={<VideoPlayer />} />
+        <Route path="/watch/:_id" element={<VideoPlayer />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <PrivateRoute

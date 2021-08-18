@@ -15,22 +15,22 @@ export const Home = () => {
     <div className={homeStyle.container}>
       <div className={homeStyle.grid}>
         {videos?.map(
-          ({ id, logo, channel, thumbnail, verified, intro, duration }) => (
+          ({ _id, logo, channel, thumbnail, verified, intro, duration }) => (
             <Link
-              key={id}
-              to={`/watch/${id}`}
+              key={_id}
+              to={`/watch/${_id}`}
               className={homeStyle.link}
               onClick={() => {
-                if (history.find((vid) => vid.id === id)) {
+                if (history.find((vid) => vid._id === _id)) {
                   return dispatch({
                     type: "CHANGE-HISTORY",
-                    payload: videos?.find((vid) => vid.id === id),
+                    payload: videos?.find((vid) => vid._id === _id),
                   });
                   return console.log("In History");
                 }
                 dispatch({
                   type: "HISTORY",
-                  payload: videos?.find((video) => video.id === id),
+                  payload: videos?.find((video) => video._id === _id),
                 });
               }}
             >

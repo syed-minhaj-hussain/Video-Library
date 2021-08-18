@@ -1,5 +1,7 @@
 export const reducerFunc = (state, action) => {
   switch (action.type) {
+    case "UPLOAD-VIDEOS":
+      return { ...state, videos: action.payload };
     case "HISTORY":
       return { ...state, history: [action.payload, ...state.history] };
 

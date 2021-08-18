@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useState } from "react";
 import { useLocation } from "react-router";
 import { Link } from "react-router-dom";
@@ -26,6 +27,21 @@ export const Login = () => {
                   password,
                   state?.from ? state.from : "/"
                 );
+                console.log(password);
+                (async function () {
+                  try {
+                    const response = await axios.post(
+                      "https://clink-player-backend.herokuapp.com/login",
+                      { email: text, password: password }
+                    );
+                    // if (response?.data?.authToken) {
+                    //   console.log({ authToken: response?.data?.authToken });
+                    // }
+                    console.log({ response: response?.data?.authtoken });
+                  } catch (err) {
+                    console.log({ err });
+                  }
+                })();
                 console.log(val);
               }}
             >
