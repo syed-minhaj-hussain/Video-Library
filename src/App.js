@@ -40,22 +40,26 @@ function App() {
           type: "UPLOAD-WATCH-LATER",
           payload: response?.data?.watchLater,
         });
-        // console.log({ response });
+        console.log({ response });
       } catch (err) {
         console.log({ err });
       }
     })();
     (async function () {
       try {
-        const response = await axios.get(
+        const {
+          data: { playlist },
+        } = await axios.get(
           "https://clink-player-backend.herokuapp.com/playlist",
           { headers: { authorization: auth } }
         );
-        dispatch({
-          type: "UPLOAD-PLAYLIST",
-          payload: response?.data?.playlist[0].playlist,
-        });
-        console.log({ response });
+        if (playlist) {
+          dispatch({
+            type: "UPLOAD-PLAYLIST",
+            payload: playlist,
+          });
+        }
+        console.log(playlist);
       } catch (err) {
         console.log({ err });
       }
@@ -68,13 +72,15 @@ function App() {
           "https://clink-player-backend.herokuapp.com/history",
           { headers: { authorization: auth } }
         );
-        dispatch({
-          type: "UPLOAD-HISTORY",
-          payload: history[0].history,
-        });
+        if (history) {
+          dispatch({
+            type: "UPLOAD-HISTORY",
+            payload: history,
+          });
+        }
         console.log("Home :", history);
-        const getData = history[0].history.map((item) => item);
-        console.log(getData);
+        // const getData = history[0].history.map((item) => item);
+        // console.log(getData);
       } catch (err) {
         console.log({ err });
       }
@@ -90,6 +96,7 @@ function App() {
           type: "UPLOAD-LIKED-VIDEOS",
           payload: response?.data?.likedVideo,
         });
+        console.log(response);
       } catch (err) {
         console.log({ err });
       }

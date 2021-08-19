@@ -39,12 +39,12 @@ export const PlaylistVideos = ({ name }) => {
             </Link>
             <TiDelete
               className={likedStyle.delete}
-              onClick={() =>
+              onClick={() => {
                 dispatch({
                   type: "REMOVE-FROM-PLAYLIST",
                   payload: { _id, name, list },
-                })
-              }
+                });
+              }}
             />
           </div>
         ))}

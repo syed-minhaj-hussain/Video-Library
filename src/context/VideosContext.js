@@ -1,10 +1,4 @@
-import {
-  createContext,
-  useReducer,
-  useContext,
-  useEffect,
-  useState,
-} from "react";
+import { createContext, useReducer, useContext, useEffect } from "react";
 import { reducerFunc } from "../utilities";
 import axios from "axios";
 import { useAuthContext } from "./AuthContext";
@@ -19,8 +13,6 @@ export const VideosProvider = ({ children }) => {
     videos: null,
   });
   const { auth } = useAuthContext();
-  console.log({ playlist: state.playlist });
-  console.log(state.history);
   useEffect(
     () => localStorage.setItem("myPlaylist", JSON.stringify(state.playlist)),
     [state.playlist]
@@ -37,7 +29,7 @@ export const VideosProvider = ({ children }) => {
             state.history,
             { headers: { authorization: auth } }
           );
-          console.log(response?.data?.savedHistory);
+          // console.log(response?.data?.savedHistory);
         } catch (err) {
           console.log({ err });
         }
@@ -54,7 +46,7 @@ export const VideosProvider = ({ children }) => {
             state.playlist,
             { headers: { authorization: auth } }
           );
-          console.log(response?.data?.savedPlaylist);
+          // console.log(response?.data?.savedPlaylist);
         } catch (err) {
           console.log({ err });
         }
@@ -63,7 +55,7 @@ export const VideosProvider = ({ children }) => {
     );
   }, [state.playlist]);
 
-  console.log(state.history);
+  // console.log(state.history);
 
   return (
     <VideosContext.Provider value={{ state, dispatch }}>
