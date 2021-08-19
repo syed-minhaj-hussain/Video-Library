@@ -1,25 +1,28 @@
 import React from "react";
 import { useVideosContext } from "../../context/VideosContext";
 import likedStyle from "../history/history.module.css";
+import axios from "axios";
 
 import { TiDelete } from "react-icons/ti";
 import { Link } from "react-router-dom";
+import { useAuthContext } from "../../context/AuthContext";
 
 export const LikedVideos = () => {
   const {
     state: { liked },
     dispatch,
   } = useVideosContext();
+  const { auth } = useAuthContext();
   // const rev = liked.reverse();
   console.log({ liked });
   return (
     <div className={likedStyle.container}>
       <h1 className={likedStyle.title}>Videos You've Liked!</h1>
       <div className={likedStyle.grid}>
-        {liked?.map(({ id, thumbnail, intro, channel }) => (
+        {liked?.map(({ _id, thumbnail, intro, channel }) => (
           <div className={likedStyle.main}>
             {" "}
-            <Link to={`/watch/${id}`} className={likedStyle.link} key={id}>
+            <Link to={`/watch/${_id}`} className={likedStyle.link} key={_id}>
               <div className={likedStyle.card}>
                 <figure>
                   <img src={thumbnail} alt={channel} />
@@ -32,9 +35,20 @@ export const LikedVideos = () => {
             </Link>
             <TiDelete
               className={likedStyle.delete}
-              onClick={() =>
-                dispatch({ type: "REMOVE-FROM-LIKED", payload: id })
-              }
+              onClick={async () => {
+                dispatch({ type: "REMOVE-FROM-LIKED", payload: _id });
+                try {
+                  const response = await axios.delete(
+                    `https://clink-player-backend.herokuapp.com/likedVideos/${_id}`,
+                    { headers: { authorization: auth } }
+                  );
+                  if (response) {
+                    console.log(response.data.message);
+                  }
+                } catch (err) {
+                  console.log({ err });
+                }
+              }}
             />
           </div>
         ))}
