@@ -1,6 +1,6 @@
 import axios from "axios";
-import { useState } from "react";
-import { useLocation } from "react-router";
+import { useState, useEffect } from "react";
+import { Navigate, useLocation, useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { useAuthContext } from "../../context/AuthContext";
 import logStyle from "./login.module.css";
@@ -10,7 +10,16 @@ export const Login = () => {
   const [text, setText] = useState("Test");
   const [password, setPassword] = useState("Success");
   const { state } = useLocation();
+  const navigate = useNavigate();
+  const { auth, setAuth } = useAuthContext();
   console.log({ isUserLoggedIn });
+
+  useEffect(() => {
+    if (auth) {
+      navigate("/");
+    }
+  }, []);
+
   return (
     <>
       <div className={logStyle.container}>
@@ -22,11 +31,11 @@ export const Login = () => {
             <form
               onSubmit={async (e) => {
                 e.preventDefault();
-                const val = await login(
-                  text,
-                  password,
-                  state?.from ? state.from : "/"
-                );
+                // const val = await login(
+                //   text,
+                //   password,
+                //   state?.from ? state.from : "/"
+                // );
                 console.log(password);
                 (async function () {
                   try {
@@ -34,15 +43,17 @@ export const Login = () => {
                       "https://clink-player-backend.herokuapp.com/login",
                       { email: text, password: password }
                     );
-                    // if (response?.data?.authToken) {
-                    //   console.log({ authToken: response?.data?.authToken });
-                    // }
-                    console.log({ response: response?.data?.authtoken });
+                    //
+                    if (response) {
+                      console.log({ response });
+                      const authToken = response?.data?.authtoken;
+                      setAuth(authToken);
+                    }
                   } catch (err) {
-                    console.log({ err });
+                    console.log({ error: err?.response?.data?.message });
                   }
                 })();
-                console.log(val);
+                // console.log(val);
               }}
             >
               <div className={logStyle.inputs}>

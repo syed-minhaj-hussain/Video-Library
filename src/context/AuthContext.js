@@ -26,7 +26,10 @@ const usersDB = {
 export const AuthProvider = ({ children }) => {
   const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
   const [users, setUsers] = useState(usersDB);
+  const [auth, setAuth] = useState(null);
   const navigate = useNavigate();
+
+  console.log({ auth });
 
   useEffect(() => {
     setUsers(JSON.parse(localStorage.getItem("updatedUsers")) || usersDB);
@@ -104,7 +107,15 @@ export const AuthProvider = ({ children }) => {
 
   return (
     <AuthContext.Provider
-      value={{ isUserLoggedIn, setIsUserLoggedIn, login, logout, register }}
+      value={{
+        isUserLoggedIn,
+        setIsUserLoggedIn,
+        login,
+        logout,
+        register,
+        setAuth,
+        auth,
+      }}
     >
       {children}
     </AuthContext.Provider>
