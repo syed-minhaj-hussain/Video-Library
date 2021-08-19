@@ -2,6 +2,15 @@ export const reducerFunc = (state, action) => {
   switch (action.type) {
     case "UPLOAD-VIDEOS":
       return { ...state, videos: action.payload };
+    case "UPLOAD-LIKED-VIDEOS":
+      return { ...state, liked: action.payload };
+    case "UPLOAD-WATCH-LATER":
+      return { ...state, watchLater: action.payload };
+    case "UPLOAD-HISTORY":
+      return { ...state, history: action.payload };
+    case "UPLOAD-PLAYLIST":
+      return { ...state, paylist: action.payload };
+
     case "HISTORY":
       return { ...state, history: [action.payload, ...state.history] };
 
@@ -10,21 +19,21 @@ export const reducerFunc = (state, action) => {
         ...state,
         history: [
           action.payload,
-          ...state.history.filter((vid) => vid.id !== action.payload.id),
+          ...state.history.filter((vid) => vid._id !== action.payload._id),
         ],
       };
 
     case "REMOVE-FROM-HISTORY":
       return {
         ...state,
-        history: state.history.filter((vid) => vid.id !== action.payload),
+        history: state.history.filter((vid) => vid._id !== action.payload),
       };
 
     case "CREATE-NEW-PLAYLIST":
       return { ...state, playlist: [action.payload, ...state.playlist] };
 
     case "LIKE":
-      return { ...state, liked: [...state.liked, action.payload] };
+      return { ...state, liked: [...state?.liked, action.payload] };
 
     case "WATCH-LATER":
       return { ...state, watchLater: [...state.watchLater, action.payload] };
@@ -32,14 +41,14 @@ export const reducerFunc = (state, action) => {
     case "REMOVE-FROM-LIKED":
       return {
         ...state,
-        liked: state?.liked?.filter((vid) => vid.id !== action.payload),
+        liked: state?.liked?.filter((vid) => vid._id !== action.payload),
       };
 
     case "REMOVE-FROM-WATCH-LATER":
       return {
         ...state,
         watchLater: state?.watchLater?.filter(
-          (vid) => vid.id !== action.payload
+          (vid) => vid._id !== action.payload
         ),
       };
     case "GET-LIST-BY-ID":
@@ -50,7 +59,7 @@ export const reducerFunc = (state, action) => {
             ? {
                 ...action.payload.list,
                 videos: action.playload?.list?.videos.find(
-                  (vid) => vid.id === action.payload.video.id
+                  (vid) => vid._id === action.payload.video._id
                 )
                   ? [...action.payload.list.videos]
                   : [...action.payload.list.videos, action.payload.video],
@@ -66,7 +75,7 @@ export const reducerFunc = (state, action) => {
             ? {
                 ...action.payload.list,
                 videos: action.payload.list.videos.filter(
-                  (vid) => vid.id !== action.payload.id
+                  (vid) => vid._id !== action.payload._id
                 ),
               }
             : list
@@ -82,6 +91,8 @@ export const reducerFunc = (state, action) => {
       return { ...state, watchLater: action.payload };
 
     case "HISTORY-UPDATED":
+      return { ...state, history: action.payload };
+    case "CHANGE-HISTORY-UPDATED":
       return { ...state, history: action.payload };
 
     default:

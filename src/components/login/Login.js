@@ -29,31 +29,12 @@ export const Login = () => {
               Enter Your Username & Password{" "}
             </h3>
             <form
-              onSubmit={async (e) => {
+              onSubmit={(e) => {
                 e.preventDefault();
-                // const val = await login(
-                //   text,
-                //   password,
-                //   state?.from ? state.from : "/"
-                // );
-                console.log(password);
-                (async function () {
-                  try {
-                    const response = await axios.post(
-                      "https://clink-player-backend.herokuapp.com/login",
-                      { email: text, password: password }
-                    );
-                    //
-                    if (response) {
-                      console.log({ response });
-                      const authToken = response?.data?.authtoken;
-                      setAuth(authToken);
-                    }
-                  } catch (err) {
-                    console.log({ error: err?.response?.data?.message });
-                  }
-                })();
+                login(text, password, state?.from);
                 // console.log(val);
+                setText("");
+                setPassword("");
               }}
             >
               <div className={logStyle.inputs}>

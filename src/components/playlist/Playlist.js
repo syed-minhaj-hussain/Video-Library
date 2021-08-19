@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useVideosContext } from "../../context/VideosContext";
 import playStyle from "./playlist.module.css";
 import { v4 as uuidv4 } from "uuid";
 import { TiDelete } from "react-icons/ti";
 
-export const Playlist = ({ video, id, setShow }) => {
+export const Playlist = ({ video, _id, setShow }) => {
   const [text, setText] = useState("");
   const {
     state: { playlist },
@@ -12,6 +12,7 @@ export const Playlist = ({ video, id, setShow }) => {
   } = useVideosContext();
 
   console.log({ playlist });
+
   return (
     <div className={playStyle.list}>
       <TiDelete
@@ -59,11 +60,13 @@ export const Playlist = ({ video, id, setShow }) => {
               onClick={() => {
                 dispatch({
                   type: "GET-LIST-BY-ID",
-                  payload: { list, video, id },
+                  payload: { list, video },
                 });
                 console.log({ list });
               }}
-              disabled={list.videos.find((vid) => vid.id === id) ? true : false}
+              disabled={
+                list.videos.find((vid) => vid._id === _id) ? true : false
+              }
               style={{
                 padding: "0.2rem 1rem",
                 fontSize: "1rem",
@@ -72,7 +75,7 @@ export const Playlist = ({ video, id, setShow }) => {
                 float: "right",
               }}
             >
-              Add
+              {list.videos.find((vid) => vid._id === _id) ? "Added" : "ADD"}
             </button>
           </p>
         </div>

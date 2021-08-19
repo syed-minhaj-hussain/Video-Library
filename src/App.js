@@ -17,21 +17,8 @@ import axios from "axios";
 import { useVideosContext } from "./context/VideosContext";
 
 function App() {
-  const { isUserLoggedIn, setIsUserLoggedIn } = useAuthContext();
-  const {
-    state: { videos },
-    dispatch,
-  } = useVideosContext();
-  console.log(videos);
-  const navigate = useNavigate();
-  useEffect(() => {
-    const response = JSON.parse(localStorage.getItem("loginStatus"));
-    if (response?.status === true) {
-      setIsUserLoggedIn(true);
-      navigate(response?.path);
-      console.log(response?.path);
-    }
-  }, []);
+  const { auth } = useAuthContext();
+  const { state, dispatch } = useVideosContext();
   useEffect(() => {
     (async function () {
       try {
@@ -39,6 +26,70 @@ function App() {
           "https://clink-player-backend.herokuapp.com/videos"
         );
         dispatch({ type: "UPLOAD-VIDEOS", payload: response?.data?.videos });
+      } catch (err) {
+        console.log({ err });
+      }
+    })();
+    (async function () {
+      try {
+        const response = await axios.get(
+          "https://clink-player-backend.herokuapp.com/watchLater",
+          { headers: { authorization: auth } }
+        );
+        dispatch({
+          type: "UPLOAD-WATCH-LATER",
+          payload: response?.data?.watchLater,
+        });
+        // console.log({ response });
+      } catch (err) {
+        console.log({ err });
+      }
+    })();
+    (async function () {
+      try {
+        const response = await axios.get(
+          "https://clink-player-backend.herokuapp.com/playlist",
+          { headers: { authorization: auth } }
+        );
+        dispatch({
+          type: "UPLOAD-PLAYLIST",
+          payload: response?.data?.playlist[0].playlist,
+        });
+        console.log({ response });
+      } catch (err) {
+        console.log({ err });
+      }
+    })();
+    (async function () {
+      try {
+        const {
+          data: { history },
+        } = await axios.get(
+          "https://clink-player-backend.herokuapp.com/history",
+          { headers: { authorization: auth } }
+        );
+        dispatch({
+          type: "UPLOAD-HISTORY",
+          payload: history[0].history,
+        });
+        console.log("Home :", history);
+        const getData = history[0].history.map((item) => item);
+        console.log(getData);
+      } catch (err) {
+        console.log({ err });
+      }
+    })();
+    (async function () {
+      try {
+        const response = await axios.get(
+          `https://clink-player-backend.herokuapp.com/likedVideos/`,
+          { headers: { authorization: auth } }
+        );
+        // console.log(response);
+        dispatch({
+          type: "UPLOAD-LIKED-VIDEOS",
+          payload: response?.data?.likedVideo,
+        });
       } catch (err) {
         console.log({ err });
       }
@@ -54,25 +105,13 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <PrivateRoute
-          isUserLoggedIn={isUserLoggedIn}
+          auth={auth}
           path="/likedVideos"
           element={<LikedVideos />}
         />
-        <PrivateRoute
-          isUserLoggedIn={isUserLoggedIn}
-          path="/history"
-          element={<History />}
-        />
-        <PrivateRoute
-          isUserLoggedIn={isUserLoggedIn}
-          path="/playlist"
-          element={<MainPlaylist />}
-        />
-        <PrivateRoute
-          isUserLoggedIn={isUserLoggedIn}
-          path="/watchLater"
-          element={<WatchLater />}
-        />
+        <PrivateRoute auth={auth} path="/history" element={<History />} />
+        <PrivateRoute auth={auth} path="/playlist" element={<MainPlaylist />} />
+        <PrivateRoute auth={auth} path="/watchLater" element={<WatchLater />} />
       </Routes>
       <Footer />
     </div>

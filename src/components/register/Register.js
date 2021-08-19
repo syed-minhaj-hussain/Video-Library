@@ -4,17 +4,11 @@ import { useAuthContext } from "../../context/AuthContext";
 import regStyle from "./register.module.css";
 
 export const Register = () => {
-  const { isUserLoggedIn, register } = useAuthContext();
+  const { auth, register } = useAuthContext();
   const [text, setText] = useState("");
   const [password, setPassword] = useState("");
-  const [{ status, msg, backgroundColor, color }, setAlert] = useState({
-    status: null,
-    message: null,
-    backgroundColor: "#fff",
-    color: "#fff",
-  });
-  const navigate = useNavigate();
-  console.log({ isUserLoggedIn });
+  const [email, setEmail] = useState("");
+
   return (
     <>
       <div className={regStyle.container}>
@@ -23,55 +17,14 @@ export const Register = () => {
             <h3 style={{ marginBottom: "1rem" }}>
               Enter Your Username & Password{" "}
             </h3>
-            {status === true && (
-              <p
-                style={{
-                  backgroundColor,
-                  padding: "1rem",
-                  margin: "0.5rem",
-                  color,
-                }}
-              >
-                {msg} & You Will Be Redirected To Login
-              </p>
-            )}
-            {status === false && (
-              <p
-                style={{
-                  backgroundColor,
-                  padding: "1rem",
-                  margin: "0.5rem",
-                  color,
-                }}
-              >
-                {msg}
-              </p>
-            )}
+
             <form
-              onSubmit={async (e) => {
+              onSubmit={(e) => {
                 e.preventDefault();
-                const response = await register(text, password);
-                console.log(response);
-                if (response?.success) {
-                  console.log(response.success);
-                  setAlert({
-                    status: response.success,
-                    msg: response?.message,
-                    backgroundColor: "green",
-                    color: "#fff",
-                  });
-                  setTimeout(() => setAlert(false), 1000);
-                  setTimeout(() => navigate("/login"), 2000);
-                }
-                if (!response?.success) {
-                  setAlert({
-                    status: response.success,
-                    msg: response.message,
-                    backgroundColor: "red",
-                    color: "#fff",
-                  });
-                  setTimeout(() => setAlert(false), 1000);
-                }
+                register(text, email, password);
+                setEmail("");
+                setText("");
+                setPassword("");
               }}
             >
               <div className={regStyle.inputs}>
@@ -83,6 +36,17 @@ export const Register = () => {
                   placeholder="Enter Username..."
                   value={text}
                   onChange={(e) => setText(e.target.value)}
+                />
+              </div>
+              <div className={regStyle.inputs}>
+                <label htmlFor="name">Email :</label>
+                <input
+                  type="text"
+                  name=""
+                  id="name"
+                  placeholder="Enter Email..."
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                 />
               </div>
               <div className={regStyle.inputs}>

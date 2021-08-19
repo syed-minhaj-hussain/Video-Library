@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import homeStyle from "./home.module.css";
 
 import { GoVerified } from "react-icons/go";
@@ -11,6 +11,7 @@ export const Home = () => {
     state: { videos, history },
     dispatch,
   } = useVideosContext();
+
   return (
     <div className={homeStyle.container}>
       <div className={homeStyle.grid}>

@@ -1,8 +1,8 @@
 import { Route, Navigate } from "react-router-dom";
-export const PrivateRoute = ({ isUserLoggedIn, element, path }) => {
+export const PrivateRoute = ({ auth, element, path }) => {
   return (
     <>
-      {isUserLoggedIn ? (
+      {auth ? (
         <Route path={path} element={element} />
       ) : (
         <Navigate to="/login" state={{ from: path }} replace />

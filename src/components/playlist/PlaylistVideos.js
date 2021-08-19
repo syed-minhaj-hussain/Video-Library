@@ -24,9 +24,9 @@ export const PlaylistVideos = ({ name }) => {
         {name}
       </h1>
       <div className={likedStyle.grid}>
-        {list.videos?.map(({ id, thumbnail, intro, channel }) => (
-          <div className={likedStyle.main} key={id}>
-            <Link to={`/watch/${id}`} className={likedStyle.link} key={id}>
+        {list?.videos?.map(({ _id, thumbnail, intro, channel }) => (
+          <div className={likedStyle.main} key={_id}>
+            <Link to={`/watch/${_id}`} className={likedStyle.link} key={_id}>
               <div className={likedStyle.card}>
                 <figure>
                   <img src={thumbnail} alt={channel} />
@@ -42,7 +42,7 @@ export const PlaylistVideos = ({ name }) => {
               onClick={() =>
                 dispatch({
                   type: "REMOVE-FROM-PLAYLIST",
-                  payload: { id, name, list },
+                  payload: { _id, name, list },
                 })
               }
             />

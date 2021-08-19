@@ -10,7 +10,7 @@ import { ImHome } from "react-icons/im";
 
 export const Navbar = () => {
   const [isActive, setIsActive] = useState(false);
-  const { isUserLoggedIn, logout } = useAuthContext();
+  const { auth, logout } = useAuthContext();
 
   return (
     <nav className={navStyle.navbar}>
@@ -110,8 +110,8 @@ export const Navbar = () => {
               <FaListAlt style={{ fontSize: "1.25rem" }} />
             </NavLink>
           </li>
-          <li className={`${isUserLoggedIn ? `${navStyle.logout}` : ""} `}>
-            {isUserLoggedIn ? (
+          <li className={`${auth ? `${navStyle.logout}` : ""} `}>
+            {auth ? (
               <button
                 className={navStyle.last}
                 onClick={() => {
