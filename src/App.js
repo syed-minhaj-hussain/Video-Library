@@ -56,7 +56,7 @@ function App() {
         if (playlist) {
           dispatch({
             type: "UPLOAD-PLAYLIST",
-            payload: playlist,
+            payload: playlist ? playlist : [],
           });
         }
         console.log(playlist);
@@ -75,7 +75,7 @@ function App() {
         if (history) {
           dispatch({
             type: "UPLOAD-HISTORY",
-            payload: history,
+            payload: history ? history : [],
           });
         }
         console.log("Home :", history);

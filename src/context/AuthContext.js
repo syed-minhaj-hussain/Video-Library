@@ -35,6 +35,7 @@ export const AuthProvider = ({ children }) => {
         navigate(route ? route : "/");
       }
     } catch (err) {
+      setAuth(null);
       console.log({ error: err?.response?.data?.message });
     }
   };
