@@ -20,7 +20,7 @@ export const WatchLater = () => {
       <h1 className={watchLaterStyle.title}>Watch When You're Free!</h1>
       <div className={watchLaterStyle.grid}>
         {watchLater?.map(({ _id, thumbnail, intro, channel }) => (
-          <div className={watchLaterStyle.main}>
+          <div className={watchLaterStyle.main} key={_id}>
             {" "}
             <Link
               to={`/watch/${_id}`}

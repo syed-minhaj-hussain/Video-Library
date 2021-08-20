@@ -47,19 +47,17 @@ function App() {
     })();
     (async function () {
       try {
-        const {
-          data: { playlist },
-        } = await axios.get(
+        const response = await axios.get(
           "https://clink-player-backend.herokuapp.com/playlist",
           { headers: { authorization: auth } }
         );
-        if (playlist) {
+        if (response) {
           dispatch({
             type: "UPLOAD-PLAYLIST",
-            payload: playlist ? playlist : [],
+            payload: response.data[0].playlist,
           });
+          console.log(response);
         }
-        console.log(playlist);
       } catch (err) {
         console.log({ err });
       }
