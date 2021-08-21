@@ -43,7 +43,7 @@ export const VideosProvider = ({ children }) => {
         try {
           const response = await axios.post(
             "https://clink-player-backend.herokuapp.com/playlist",
-            state.playlist,
+            state?.playlist,
             { headers: { authorization: auth } }
           );
           // console.log(response?.data?.savedPlaylist);
@@ -53,7 +53,7 @@ export const VideosProvider = ({ children }) => {
       })(),
       2000
     );
-  }, [state.playlist]);
+  }, [state?.playlist]);
 
   // console.log(state.history);
 
