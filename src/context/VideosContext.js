@@ -26,7 +26,7 @@ export const VideosProvider = ({ children }) => {
         try {
           const response = await axios.post(
             "https://clink-player-backend.herokuapp.com/history",
-            state.history,
+            state?.history,
             { headers: { authorization: auth } }
           );
           // console.log(response?.data?.savedHistory);
@@ -36,7 +36,7 @@ export const VideosProvider = ({ children }) => {
       })(),
       2000
     );
-  }, [state.history]);
+  }, [state?.history]);
   useEffect(() => {
     setTimeout(
       (async function () {

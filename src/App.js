@@ -47,6 +47,17 @@ function App() {
     })();
     (async function () {
       try {
+        // const response = await axios.get(
+        //   "https://clink-player-backend.herokuapp.com/playlist",
+        //   { headers: { authorization: auth } }
+        // );
+        // if (response) {
+        //   dispatch({
+        //     type: "UPLOAD-PLAYLIST",
+        //     payload: response.data[0].playlist,
+        //   });
+        //   console.log(response);
+        // }
         const response = await axios.get(
           "https://clink-player-backend.herokuapp.com/playlist",
           { headers: { authorization: auth } }
@@ -54,7 +65,7 @@ function App() {
         if (response) {
           dispatch({
             type: "UPLOAD-PLAYLIST",
-            payload: response.data[0].playlist,
+            payload: response.data[0].playlist ? response.data[0].playlist : [],
           });
           console.log(response);
         }
@@ -64,19 +75,31 @@ function App() {
     })();
     (async function () {
       try {
-        const {
-          data: { history },
-        } = await axios.get(
+        const response = await axios.get(
           "https://clink-player-backend.herokuapp.com/history",
           { headers: { authorization: auth } }
         );
-        if (history) {
+        // const {
+        //   data: { history },
+        // } = await axios.get(
+        //   "https://clink-player-backend.herokuapp.com/history",
+        //   { headers: { authorization: auth } }
+        // );
+        // if (history) {
+        //   dispatch({
+        //     type: "UPLOAD-HISTORY",
+        //     payload: history ? history : [],
+        //   });
+        // }
+        if (response) {
           dispatch({
             type: "UPLOAD-HISTORY",
-            payload: history ? history : [],
+            payload: response?.data[0]?.history
+              ? response?.data[0]?.history
+              : [],
           });
         }
-        console.log("Home :", history);
+        console.log("Home :", response);
         // const getData = history[0].history.map((item) => item);
         // console.log(getData);
       } catch (err) {
