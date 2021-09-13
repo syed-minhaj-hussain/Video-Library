@@ -63,7 +63,7 @@ export const VideoPlayer = () => {
                         });
                         try {
                           const response = await axios.delete(
-                            `http://localhost:5000/likedVideos/${isVideoLiked._id}`,
+                            `https://clink-player-backend.herokuapp.com/likedVideos/${isVideoLiked._id}`,
                             { headers: { authorization: auth } }
                           );
                           // const response = await axios.delete(
@@ -90,7 +90,7 @@ export const VideoPlayer = () => {
                         console.log({ findVideoById, isVideoLiked });
                         try {
                           const response = await axios.post(
-                            "http://localhost:5000/likedVideos",
+                            "https://clink-player-backend.herokuapp.com/likedVideos",
                             {
                               name: findVideoById?.name,
                               duration: findVideoById?.duration,
