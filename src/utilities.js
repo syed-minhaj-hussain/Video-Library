@@ -41,14 +41,14 @@ export const reducerFunc = (state, action) => {
     case "REMOVE-FROM-LIKED":
       return {
         ...state,
-        liked: state?.liked?.filter((vid) => vid._id !== action.payload),
+        liked: state?.liked?.filter((vid) => vid.name !== action.payload),
       };
 
     case "REMOVE-FROM-WATCH-LATER":
       return {
         ...state,
         watchLater: state?.watchLater?.filter(
-          (vid) => vid._id !== action.payload
+          (vid) => vid.name !== action.payload
         ),
       };
     case "GET-LIST-BY-ID":

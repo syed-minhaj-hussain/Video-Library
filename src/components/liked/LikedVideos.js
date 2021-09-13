@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useVideosContext } from "../../context/VideosContext";
 import likedStyle from "../history/history.module.css";
 import axios from "axios";
@@ -6,6 +6,7 @@ import axios from "axios";
 import { TiDelete } from "react-icons/ti";
 import { Link } from "react-router-dom";
 import { useAuthContext } from "../../context/AuthContext";
+import { useToastContext } from "../../context/ToastContext";
 
 export const LikedVideos = () => {
   const {
@@ -13,16 +14,38 @@ export const LikedVideos = () => {
     dispatch,
   } = useVideosContext();
   const { auth } = useAuthContext();
+  const { toast, runToast } = useToastContext();
   // const rev = liked.reverse();
   console.log({ liked });
+  useEffect(() => {
+    (async function () {
+      if (auth) {
+        try {
+          const response = await axios.get(
+            "https://clink-player-backend.herokuapp.com/likedVideos",
+            { headers: { authorization: auth } }
+          );
+          if (response?.data?.success === true) {
+            console.log("Like Updated");
+            dispatch({
+              type: "UPLOAD-LIKED-VIDEOS",
+              payload: response?.data?.likedVideo,
+            });
+          }
+        } catch (err) {
+          console.log({ likedErr: err });
+        }
+      }
+    })();
+  }, []);
   return (
     <div className={likedStyle.container}>
       <h1 className={likedStyle.title}>Videos You've Liked!</h1>
       <div className={likedStyle.grid}>
-        {liked?.map(({ _id, thumbnail, intro, channel }) => (
-          <div className={likedStyle.main}>
+        {liked?.map(({ _id, videoId, thumbnail, intro, channel, name }) => (
+          <div className={likedStyle.main} key={_id}>
             {" "}
-            <Link to={`/watch/${_id}`} className={likedStyle.link} key={_id}>
+            <Link to={`/watch/${name}`} className={likedStyle.link} key={_id}>
               <div className={likedStyle.card}>
                 <figure>
                   <img src={thumbnail} alt={channel} />
@@ -36,14 +59,15 @@ export const LikedVideos = () => {
             <TiDelete
               className={likedStyle.delete}
               onClick={async () => {
-                dispatch({ type: "REMOVE-FROM-LIKED", payload: _id });
+                dispatch({ type: "REMOVE-FROM-LIKED", payload: name });
                 try {
                   const response = await axios.delete(
                     `https://clink-player-backend.herokuapp.com/likedVideos/${_id}`,
                     { headers: { authorization: auth } }
                   );
-                  if (response) {
-                    console.log(response.data.message);
+                  if (response?.data?.success === true) {
+                    // console.log(response.data.message);
+                    runToast(toast.success, response?.data?.message);
                   }
                 } catch (err) {
                   console.log({ err });

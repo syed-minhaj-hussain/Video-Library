@@ -21,26 +21,28 @@ export const VideosProvider = ({ children }) => {
     localStorage.setItem("history", JSON.stringify(state.history));
   }, [state.history]);
   useEffect(() => {
-    setTimeout(
-      (async function () {
+    (async function () {
+      setTimeout(async () => {
         try {
           const response = await axios.post(
             "https://clink-player-backend.herokuapp.com/history",
             state?.history,
             { headers: { authorization: auth } }
           );
+
+          console.log("History");
           // console.log(response?.data?.savedHistory);
         } catch (err) {
-          console.log({ err });
+          console.log({ historyErr: err });
         }
-      })(),
-      2000
-    );
+      }, 1000);
+    })();
   }, [state?.history]);
   useEffect(() => {
-    setTimeout(
-      (async function () {
+    (async function () {
+      setTimeout(async () => {
         try {
+          console.log("PLAYLIST");
           const response = await axios.post(
             "https://clink-player-backend.herokuapp.com/playlist",
             state?.playlist,
@@ -50,10 +52,34 @@ export const VideosProvider = ({ children }) => {
         } catch (err) {
           console.log({ err });
         }
-      })(),
-      2000
-    );
+      }, 1000);
+    })();
   }, [state?.playlist]);
+
+  // useEffect(() => {
+  //   (async function () {
+  //     // console.log("Liked");
+  //     if (auth) {
+  //       //   setTimeout(async () => {
+  //       try {
+  //         const response = await axios.get(
+  //           "https://clink-player-backend.herokuapp.com/likedVideos",
+  //           { headers: { authorization: auth } }
+  //         );
+  //         if (response?.data?.success === true) {
+  //           // console.log("Like Updated");
+  //           dispatch({
+  //             type: "UPLOAD-LIKED-VIDEOS",
+  //             payload: response?.data?.likedVideo,
+  //           });
+  //         }
+  //       } catch (err) {
+  //         console.log({ likedErr: err });
+  //       }
+  //       //   }, 1000);
+  //     }
+  //   })();
+  // }, [state?.liked, auth]);
 
   // console.log(state.history);
 

@@ -1,4 +1,5 @@
 import "./App.css";
+import "react-toastify/dist/ReactToastify.css";
 import { useEffect } from "react";
 import { Routes, Route, useNavigate } from "react-router-dom";
 import { useAuthContext } from "./context/AuthContext";
@@ -15,10 +16,12 @@ import { WatchLater } from "./components/watchLater/WatchLater";
 import { Footer } from "./components/footer/Footer";
 import axios from "axios";
 import { useVideosContext } from "./context/VideosContext";
+import { useToastContext } from "./context/ToastContext";
 
 function App() {
   const { auth } = useAuthContext();
   const { state, dispatch } = useVideosContext();
+  const { ToastContainer } = useToastContext();
   useEffect(() => {
     (async function () {
       try {
@@ -112,7 +115,7 @@ function App() {
           `https://clink-player-backend.herokuapp.com/likedVideos/`,
           { headers: { authorization: auth } }
         );
-        // console.log(response);
+        console.log("APP");
         dispatch({
           type: "UPLOAD-LIKED-VIDEOS",
           payload: response?.data?.likedVideo,
@@ -122,14 +125,14 @@ function App() {
         console.log({ err });
       }
     })();
-  }, []);
+  }, [auth]);
 
   return (
     <div className="App">
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/watch/:_id" element={<VideoPlayer />} />
+        <Route path="/watch/:name" element={<VideoPlayer />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <PrivateRoute
@@ -141,6 +144,19 @@ function App() {
         <PrivateRoute auth={auth} path="/playlist" element={<MainPlaylist />} />
         <PrivateRoute auth={auth} path="/watchLater" element={<WatchLater />} />
       </Routes>
+      <ToastContainer
+        style={{ maxWidth: "400px" }}
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        theme="colored"
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
       <Footer />
     </div>
   );

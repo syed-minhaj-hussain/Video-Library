@@ -4,7 +4,7 @@ import playStyle from "./playlist.module.css";
 import { v4 as uuidv4 } from "uuid";
 import { TiDelete } from "react-icons/ti";
 
-export const Playlist = ({ video, _id, setShow }) => {
+export const Playlist = ({ video, id, setShow }) => {
   const [text, setText] = useState("");
   const {
     state: { playlist },
@@ -65,7 +65,7 @@ export const Playlist = ({ video, _id, setShow }) => {
                 console.log({ list });
               }}
               disabled={
-                list.videos.find((vid) => vid._id === _id) ? true : false
+                list.videos.find((vid) => vid._id === id) ? true : false
               }
               style={{
                 padding: "0.2rem 1rem",
@@ -75,7 +75,7 @@ export const Playlist = ({ video, _id, setShow }) => {
                 float: "right",
               }}
             >
-              {list.videos.find((vid) => vid._id === _id) ? "Added" : "ADD"}
+              {list.videos.find((vid) => vid._id === id) ? "Added" : "ADD"}
             </button>
           </p>
         </div>

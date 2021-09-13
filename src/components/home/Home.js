@@ -16,10 +16,19 @@ export const Home = () => {
     <div className={homeStyle.container}>
       <div className={homeStyle.grid}>
         {videos?.map(
-          ({ _id, logo, channel, thumbnail, verified, intro, duration }) => (
+          ({
+            _id,
+            logo,
+            name,
+            channel,
+            thumbnail,
+            verified,
+            intro,
+            duration,
+          }) => (
             <Link
               key={_id}
-              to={`/watch/${_id}`}
+              to={`/watch/${name}`}
               className={homeStyle.link}
               onClick={() => {
                 if (history.find((vid) => vid._id === _id)) {
