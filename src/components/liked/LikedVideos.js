@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import { useVideosContext } from "../../context/VideosContext";
 import likedStyle from "../history/history.module.css";
 import axios from "axios";
-
 import { TiDelete } from "react-icons/ti";
 import { Link } from "react-router-dom";
 import { useAuthContext } from "../../context/AuthContext";
@@ -15,8 +14,7 @@ export const LikedVideos = () => {
   } = useVideosContext();
   const { auth } = useAuthContext();
   const { toast, runToast } = useToastContext();
-  // const rev = liked.reverse();
-  console.log({ liked });
+
   useEffect(() => {
     (async function () {
       if (auth) {

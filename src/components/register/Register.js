@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import { useAuthContext } from "../../context/AuthContext";
 import regStyle from "./register.module.css";
@@ -8,7 +8,12 @@ export const Register = () => {
   const [text, setText] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
-
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (auth) {
+      navigate("/");
+    }
+  }, []);
   return (
     <>
       <div className={regStyle.container}>

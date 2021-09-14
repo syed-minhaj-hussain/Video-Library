@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useState } from "react";
 import { useNavigate } from "react-router";
 import axios from "axios";
 import { useToastContext } from "./ToastContext";
@@ -12,15 +12,6 @@ export const AuthProvider = ({ children }) => {
   const [auth, setAuth] = useState(
     JSON.parse(localStorage.getItem("token")) || null
   );
-  // console.log({ auth });
-  // console.log(getAuthToken);
-
-  // useEffect(() => {
-  //   setUsers(JSON.parse(localStorage.getItem("updatedUsers")) || usersDB);
-  // }, []);
-  // useEffect(() => {
-  //   localStorage.setItem("updatedUsers", JSON.stringify(users));
-  // }, [users]);
 
   const login = async (text, password, route) => {
     try {

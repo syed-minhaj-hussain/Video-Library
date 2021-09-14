@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useVideosContext } from "../../context/VideosContext";
 import playStyle from "./playlist.module.css";
 import { v4 as uuidv4 } from "uuid";
@@ -11,7 +11,7 @@ export const Playlist = ({ video, id, setShow }) => {
     dispatch,
   } = useVideosContext();
 
-  console.log({ playlist });
+  // console.log({ playlist });
 
   return (
     <div className={playStyle.list}>

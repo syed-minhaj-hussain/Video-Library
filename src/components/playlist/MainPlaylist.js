@@ -7,7 +7,6 @@ import { PlaylistVideos } from "./PlaylistVideos";
 export const MainPlaylist = () => {
   const {
     state: { playlist },
-    dispatch,
   } = useVideosContext();
 
   const getPlayListNames = playlist?.map(({ name }) => name);

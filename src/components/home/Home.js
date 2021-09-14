@@ -1,8 +1,6 @@
-import React, { useEffect } from "react";
+import React from "react";
 import homeStyle from "./home.module.css";
-
 import { GoVerified } from "react-icons/go";
-
 import { useVideosContext } from "../../context/VideosContext";
 import { Link } from "react-router-dom";
 
@@ -31,12 +29,11 @@ export const Home = () => {
               to={`/watch/${name}`}
               className={homeStyle.link}
               onClick={() => {
-                if (history.find((vid) => vid._id === _id)) {
+                if (history?.find((vid) => vid._id === _id)) {
                   return dispatch({
                     type: "CHANGE-HISTORY",
                     payload: videos?.find((vid) => vid._id === _id),
                   });
-                  return console.log("In History");
                 }
                 dispatch({
                   type: "HISTORY",

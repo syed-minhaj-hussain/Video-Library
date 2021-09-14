@@ -66,10 +66,6 @@ export const VideoPlayer = () => {
                             `https://clink-player-backend.herokuapp.com/likedVideos/${isVideoLiked._id}`,
                             { headers: { authorization: auth } }
                           );
-                          // const response = await axios.delete(
-                          //   `https://clink-player-backend.herokuapp.com/likedVideos/${isVideoLiked._id}`,
-                          //   { headers: { authorization: auth } }
-                          // );
                           if (response?.data?.success === true) {
                             // console.log({ wishlistResp: response.data.message });
                             runToast(toast.success, response?.data?.message);
@@ -104,11 +100,6 @@ export const VideoPlayer = () => {
                             },
                             { headers: { authorization: auth } }
                           );
-                          // const response = await axios.post(
-                          //   "https://clink-player-backend.herokuapp.com/likedVideos",
-                          //   findVideoById,
-                          //   { headers: { authorization: auth } }
-                          // );
                           if (response?.data?.success === true) {
                             // console.log(response.data.message);
                             runToast(toast.success, response?.data?.message);

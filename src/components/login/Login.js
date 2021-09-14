@@ -1,6 +1,5 @@
-import axios from "axios";
 import { useState, useEffect } from "react";
-import { Navigate, useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { useAuthContext } from "../../context/AuthContext";
 import logStyle from "./login.module.css";
@@ -11,7 +10,7 @@ export const Login = () => {
   const [password, setPassword] = useState("");
   const { state } = useLocation();
   const navigate = useNavigate();
-  const { auth, setAuth } = useAuthContext();
+  const { auth } = useAuthContext();
   console.log({ isUserLoggedIn });
 
   useEffect(() => {
@@ -32,7 +31,6 @@ export const Login = () => {
               onSubmit={(e) => {
                 e.preventDefault();
                 login(text, password, state?.from);
-                // console.log(val);
                 setText("");
                 setPassword("");
               }}
