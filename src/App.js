@@ -20,7 +20,7 @@ import { useToastContext } from "./context/ToastContext";
 
 function App() {
   const { auth } = useAuthContext();
-  const { dispatch } = useVideosContext();
+  const { videos, dispatch } = useVideosContext();
   const { ToastContainer } = useToastContext();
   useEffect(() => {
     (async function () {
@@ -58,11 +58,11 @@ function App() {
           if (response) {
             dispatch({
               type: "UPLOAD-PLAYLIST",
-              payload: response.data[0].playlist
+              payload: response?.data[0]?.playlist
                 ? response.data[0].playlist
                 : [],
             });
-            // console.log(response);
+            console.log(response);
           }
         } catch (err) {
           console.log({ err });

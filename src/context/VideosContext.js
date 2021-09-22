@@ -2,6 +2,7 @@ import { createContext, useReducer, useContext, useEffect } from "react";
 import { reducerFunc } from "../utilities";
 import axios from "axios";
 import { useAuthContext } from "./AuthContext";
+import { useToastContext } from "./ToastContext";
 const VideosContext = createContext();
 
 export const VideosProvider = ({ children }) => {
@@ -13,13 +14,14 @@ export const VideosProvider = ({ children }) => {
     videos: null,
   });
   const { auth } = useAuthContext();
+  const { toast } = useToastContext();
   useEffect(
     () => localStorage.setItem("myPlaylist", JSON.stringify(state.playlist)),
     [state.playlist]
   );
-  useEffect(() => {
-    localStorage.setItem("history", JSON.stringify(state.history));
-  }, [state.history]);
+  // useEffect(() => {
+  //   localStorage.setItem("history", JSON.stringify(state.history));
+  // }, [state.history]);
   useEffect(() => {
     if (auth) {
       (async function () {
@@ -47,6 +49,15 @@ export const VideosProvider = ({ children }) => {
             { headers: { authorization: auth } }
           );
           // console.log(response?.data?.savedPlaylist);
+          toast.success("PlayList Updated", {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
         } catch (err) {
           console.log({ err });
         }

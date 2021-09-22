@@ -3,6 +3,24 @@
   margin: 1rem auto;
   background-color: rgb(24, 24, 24);
 }
+.spin {
+  color: white;
+  width: 70px;
+  height: 70px;
+  animation-name: spinner;
+  animation-duration: 3000ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+@keyframes spinner {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
 .grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);

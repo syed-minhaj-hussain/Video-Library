@@ -9,7 +9,7 @@ export const reducerFunc = (state, action) => {
     case "UPLOAD-HISTORY":
       return { ...state, history: action.payload };
     case "UPLOAD-PLAYLIST":
-      return { ...state, paylist: action.payload };
+      return { ...state, playlist: action.payload };
 
     case "HISTORY":
       return { ...state, history: [action.payload, ...state.history] };

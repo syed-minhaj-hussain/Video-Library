@@ -3,6 +3,7 @@ import { useVideosContext } from "../../context/VideosContext";
 import historyStyle from "./history.module.css";
 import { TiDelete } from "react-icons/ti";
 import { Link } from "react-router-dom";
+import { Spinner } from "../home/Spinner";
 
 export const History = () => {
   const {
@@ -12,6 +13,7 @@ export const History = () => {
 
   return (
     <div className={historyStyle.container}>
+      {history?.length < 1 && <Spinner />}
       <h1 className={historyStyle.title}>Your Watch History!</h1>
       <div className={historyStyle.grid}>
         {history?.map(({ _id, thumbnail, intro, channel }) => (

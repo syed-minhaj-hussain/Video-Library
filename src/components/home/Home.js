@@ -1,8 +1,10 @@
 import React from "react";
 import homeStyle from "./home.module.css";
 import { GoVerified } from "react-icons/go";
+import { ImSpinner } from "react-icons/im";
 import { useVideosContext } from "../../context/VideosContext";
 import { Link } from "react-router-dom";
+import { Spinner } from "./Spinner";
 
 export const Home = () => {
   const {
@@ -12,6 +14,7 @@ export const Home = () => {
 
   return (
     <div className={homeStyle.container}>
+      {!videos && <Spinner />}
       <div className={homeStyle.grid}>
         {videos?.map(
           ({

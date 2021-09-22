@@ -6,6 +6,7 @@ import { TiDelete } from "react-icons/ti";
 import { Link } from "react-router-dom";
 import { useAuthContext } from "../../context/AuthContext";
 import { useToastContext } from "../../context/ToastContext";
+import { Spinner } from "../home/Spinner";
 
 export const LikedVideos = () => {
   const {
@@ -39,6 +40,7 @@ export const LikedVideos = () => {
   return (
     <div className={likedStyle.container}>
       <h1 className={likedStyle.title}>Videos You've Liked!</h1>
+      {liked?.length < 1 && <Spinner />}
       <div className={likedStyle.grid}>
         {liked?.map(({ _id, videoId, thumbnail, intro, channel, name }) => (
           <div className={likedStyle.main} key={_id}>
