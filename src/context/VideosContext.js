@@ -49,15 +49,17 @@ export const VideosProvider = ({ children }) => {
             { headers: { authorization: auth } }
           );
           // console.log(response?.data?.savedPlaylist);
-          toast.success("PlayList Updated", {
-            position: "top-right",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-          });
+          if (response) {
+            toast.success("PlayList Updated", {
+              position: "top-right",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+            });
+          }
         } catch (err) {
           console.log({ err });
         }
