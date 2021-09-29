@@ -13,7 +13,7 @@ export const MainPlaylist = () => {
   const [name, setName] = useState(getPlayListNames[0]);
   return (
     <div className={mainStyle.container}>
-      <PlaylistNames setName={setName} />
+      <PlaylistNames setName={setName} name={name} />
       <PlaylistVideos name={name} />
     </div>
   );
