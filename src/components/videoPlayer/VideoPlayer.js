@@ -23,7 +23,7 @@ export const VideoPlayer = () => {
 
   const findVideoById = videos?.find((video) => video?.name === name);
   const isVideoLiked = liked?.find((vid) => vid?.name === findVideoById?.name);
-  console.log({ isVideoLiked });
+
   const isVideoInWatchLater = watchLater?.find((vid) => vid?.name === name);
   return (
     <div className={videoStyle.container}>
@@ -83,7 +83,7 @@ export const VideoPlayer = () => {
                             (vid) => vid?._id === findVideoById?._id
                           ),
                         });
-                        console.log({ findVideoById, isVideoLiked });
+                        // console.log({ findVideoById, isVideoLiked });
                         try {
                           const response = await axios.post(
                             "https://clink-player-backend.herokuapp.com/likedVideos",

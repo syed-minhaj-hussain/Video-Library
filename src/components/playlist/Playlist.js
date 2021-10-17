@@ -64,7 +64,7 @@ export const Playlist = ({ video, id, setShow }) => {
                   type: "GET-LIST-BY-ID",
                   payload: { list, video },
                 });
-                console.log({ list });
+                // console.log({ list });
               }}
               disabled={
                 list.videos.find((vid) => vid._id === id) ? true : false

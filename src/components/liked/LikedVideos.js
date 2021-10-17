@@ -25,7 +25,7 @@ export const LikedVideos = () => {
             { headers: { authorization: auth } }
           );
           if (response?.data?.success === true) {
-            console.log("Like Updated");
+            // console.log("Like Updated");
             dispatch({
               type: "UPLOAD-LIKED-VIDEOS",
               payload: response?.data?.likedVideo,

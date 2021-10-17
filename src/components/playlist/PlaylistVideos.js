@@ -10,8 +10,8 @@ export const PlaylistVideos = ({ name }) => {
     dispatch,
   } = useVideosContext();
   const list = playlist.find((vid) => vid.name === name);
-  console.log({ name });
-  console.log({ list });
+  // console.log({ name });
+  // console.log({ list });
   return (
     <div className={likedStyle.container}>
       <h1

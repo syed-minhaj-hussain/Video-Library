@@ -63,7 +63,7 @@ function App() {
                 ? response.data[0].playlist
                 : [],
             });
-            console.log(response);
+            // console.log(response);
           }
         } catch (err) {
           console.log({ err });
@@ -94,7 +94,7 @@ function App() {
             `https://clink-player-backend.herokuapp.com/likedVideos/`,
             { headers: { authorization: auth } }
           );
-          console.log("APP");
+          // console.log("APP");
           dispatch({
             type: "UPLOAD-LIKED-VIDEOS",
             payload: response?.data?.likedVideo,

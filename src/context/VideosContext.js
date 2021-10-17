@@ -42,7 +42,6 @@ export const VideosProvider = ({ children }) => {
     if (auth) {
       (async function () {
         try {
-          console.log("PLAYLIST");
           const response = await axios.post(
             "https://clink-player-backend.herokuapp.com/playlist",
             state?.playlist,
@@ -50,15 +49,7 @@ export const VideosProvider = ({ children }) => {
           );
           // console.log(response?.data?.savedPlaylist);
           if (response) {
-            toast.success("PlayList Updated", {
-              position: "top-right",
-              autoClose: 5000,
-              hideProgressBar: false,
-              closeOnClick: true,
-              pauseOnHover: true,
-              draggable: true,
-              progress: undefined,
-            });
+            // console.log({ response });
           }
         } catch (err) {
           console.log({ err });

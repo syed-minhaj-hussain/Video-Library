@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import navStyle from "./nav.module.css";
 import { useAuthContext } from "../../context/AuthContext";
 import { FaHistory } from "react-icons/fa";
@@ -14,7 +14,18 @@ export const Navbar = () => {
 
   return (
     <nav className={navStyle.navbar}>
-      <div className={navStyle.brandTitle}>Clink-Player</div>
+      <div className={navStyle.brandTitle}>
+        <Link
+          to="/"
+          style={{
+            color: "#fff",
+            textDecoration: "none",
+            marginLeft: "0.25rem",
+          }}
+        >
+          Clink-Player
+        </Link>
+      </div>
       <button
         className={navStyle.toggleButton}
         onClick={() => setIsActive((prev) => !prev)}

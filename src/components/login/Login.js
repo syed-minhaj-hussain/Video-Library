@@ -11,7 +11,6 @@ export const Login = () => {
   const { state } = useLocation();
   const navigate = useNavigate();
   const { auth } = useAuthContext();
-  console.log({ isUserLoggedIn });
 
   useEffect(() => {
     if (auth) {
