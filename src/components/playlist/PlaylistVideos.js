@@ -6,10 +6,12 @@ import { Link } from "react-router-dom";
 
 export const PlaylistVideos = ({ name }) => {
   const {
-    state: { playlist },
+    state: { playlist, videos, history },
     dispatch,
   } = useVideosContext();
   const list = playlist.find((vid) => vid.name === name);
+  console.log({ name });
+  console.log({ list });
   return (
     <div className={likedStyle.container}>
       <h1
@@ -24,9 +26,25 @@ export const PlaylistVideos = ({ name }) => {
         {name}
       </h1>
       <div className={likedStyle.grid}>
-        {list?.videos?.map(({ _id, thumbnail, intro, channel }) => (
+        {list?.videos?.map(({ _id, thumbnail, intro, channel, name }) => (
           <div className={likedStyle.main} key={_id}>
-            <Link to={`/watch/${_id}`} className={likedStyle.link} key={_id}>
+            <Link
+              to={`/watch/${name}`}
+              className={likedStyle.link}
+              key={_id}
+              onClick={() => {
+                if (history?.find((vid) => vid._id === _id)) {
+                  return dispatch({
+                    type: "CHANGE-HISTORY",
+                    payload: videos?.find((vid) => vid._id === _id),
+                  });
+                }
+                dispatch({
+                  type: "HISTORY",
+                  payload: videos?.find((video) => video._id === _id),
+                });
+              }}
+            >
               <div className={likedStyle.card}>
                 <figure>
                   <img src={thumbnail} alt={channel} />
@@ -42,8 +60,9 @@ export const PlaylistVideos = ({ name }) => {
               onClick={() => {
                 dispatch({
                   type: "REMOVE-FROM-PLAYLIST",
-                  payload: { _id, name, list },
+                  payload: { _id, name: list?.name, list },
                 });
+                console.log({ _id });
               }}
             />
           </div>

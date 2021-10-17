@@ -81,6 +81,13 @@ export const reducerFunc = (state, action) => {
             : list
         ),
       };
+    case "DELETE-PLAYLIST":
+      return {
+        ...state,
+        playlist: state.playlist?.filter(
+          (list) => list.name !== action.payload
+        ),
+      };
     case "PLAYLIST-UPDATED":
       return { ...state, playlist: action.payload };
 

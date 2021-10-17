@@ -10,7 +10,7 @@ import { useToastContext } from "../../context/ToastContext";
 
 export const WatchLater = () => {
   const {
-    state: { watchLater },
+    state: { watchLater, videos, history },
     dispatch,
   } = useVideosContext();
   const { auth } = useAuthContext();
@@ -46,6 +46,18 @@ export const WatchLater = () => {
               to={`/watch/${name}`}
               className={watchLaterStyle.link}
               key={_id}
+              onClick={() => {
+                if (history?.find((vid) => vid.name === name)) {
+                  return dispatch({
+                    type: "CHANGE-HISTORY",
+                    payload: videos?.find((vid) => vid.name === name),
+                  });
+                }
+                dispatch({
+                  type: "HISTORY",
+                  payload: videos?.find((video) => video._id === _id),
+                });
+              }}
             >
               <div className={watchLaterStyle.card}>
                 <figure>

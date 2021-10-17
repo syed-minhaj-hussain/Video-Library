@@ -2,9 +2,12 @@ import React from "react";
 import { useVideosContext } from "../../context/VideosContext";
 import nameStyle from "./playlist.module.css";
 
+import { TiDelete } from "react-icons/ti";
+
 export const PlaylistNames = ({ setName, name }) => {
   const {
     state: { playlist },
+    dispatch,
   } = useVideosContext();
   return (
     <>
@@ -19,6 +22,12 @@ export const PlaylistNames = ({ setName, name }) => {
           }}
         >
           {pName}
+          <TiDelete
+            className={nameStyle.delete}
+            onClick={() =>
+              dispatch({ type: "DELETE-PLAYLIST", payload: pName })
+            }
+          />
         </button>
       ))}
     </>

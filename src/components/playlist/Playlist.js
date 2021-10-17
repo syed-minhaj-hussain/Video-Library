@@ -23,10 +23,12 @@ export const Playlist = ({ video, id, setShow }) => {
         onSubmit={(e) => {
           e.preventDefault();
           // setValue(text);
-          dispatch({
-            type: "CREATE-NEW-PLAYLIST",
-            payload: { id: uuidv4(), name: text, videos: [] },
-          });
+          if (text !== "") {
+            dispatch({
+              type: "CREATE-NEW-PLAYLIST",
+              payload: { id: uuidv4(), name: text, videos: [] },
+            });
+          }
           setText("");
         }}
       >
@@ -41,7 +43,7 @@ export const Playlist = ({ video, id, setShow }) => {
             onChange={(e) => setText(e.target.value)}
           />
         </label>
-        <input type="submit" value="Add" className={playStyle.submit} />
+        <input type="submit" value="Create" className={playStyle.submit} />
       </form>
       <h2>Avaliable playlist</h2>
       {playlist?.map((list) => (

@@ -17,10 +17,11 @@ import { Footer } from "./components/footer/Footer";
 import axios from "axios";
 import { useVideosContext } from "./context/VideosContext";
 import { useToastContext } from "./context/ToastContext";
+import { Playlist } from "./components/playlist/Playlist";
 
 function App() {
   const { auth } = useAuthContext();
-  const { videos, dispatch } = useVideosContext();
+  const { history, liked, playlist, watchLater, dispatch } = useVideosContext();
   const { ToastContainer } = useToastContext();
   useEffect(() => {
     (async function () {
@@ -136,7 +137,9 @@ function App() {
         draggable
         pauseOnHover
       />
-      <Footer />
+      {history?.length < 6 && WatchLater?.length < 6 && liked?.length < 6 && (
+        <Footer />
+      )}
     </div>
   );
 }

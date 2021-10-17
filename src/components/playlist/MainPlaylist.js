@@ -12,7 +12,25 @@ export const MainPlaylist = () => {
   const getPlayListNames = playlist?.map(({ name }) => name);
   const [name, setName] = useState(getPlayListNames[0]);
   return (
-    <div className={mainStyle.container}>
+    <div
+      className={`${
+        playlist?.length !== 0
+          ? `${mainStyle.container}`
+          : `${mainStyle.playListContainer}`
+      }`}
+    >
+      {playlist?.length === 0 && (
+        <h1
+          style={{
+            marginLeft: "42vw",
+            color: "#fff",
+            fontWeight: "180",
+            marginTop: "1rem",
+          }}
+        >
+          Your Playlists
+        </h1>
+      )}
       <PlaylistNames setName={setName} name={name} />
       <PlaylistVideos name={name} />
     </div>
